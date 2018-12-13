@@ -27,14 +27,15 @@ After completing this lab, you will be able to:
 
 3. A self-checking program (dct_test.c) is provided. Using that we can validate the design. A Makefile is also provided. Using the Makefile, the necessary source files can be compiled and the compiled program can be executed. In the Vivado HLS Command Prompt, type make to compile and execute the program.
     <p align="center">
-    <img src ="./images/lab3/Figure1.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure1.png">
     </p>
     <p align = "center">
     <i>Validating the design</i>
     </p>
-Note that the source files (dct.c and dct_test.c are compiled, then dct executable program was
-created, and then it was executed. The program tests the design and outputs Results are good
-message.
+
+    Note that the source files (dct.c and dct_test.c are compiled, then dct executable program was
+    created, and then it was executed. The program tests the design and outputs Results are good
+    message.
 
 4. Close the command prompt window by typing exit.
 
@@ -43,48 +44,49 @@ message.
 #### Create a new project in Vivado HLS GUI targeting xc7z020clg400-1(pynq).
 
 1. Launch Vivado HLS: **Select Start > All Programs > Xilinx Design Tools > Vivado 2018.2 >
-Vivado HLS > Vivado HLS 2018.2**.
+  Vivado HLS > Vivado HLS 2018.2**.
 
 2. In the Vivado HLS GUI, select **File > New Project**. The New Vivado HLS Project wizard opens.
 
 3. Click Browse… button of the Location field and browse to **c:\xup\hls\labs\lab3** and then click
-OK.
+  OK.
 
 4. For Project Name, type **dct.prj**.
 
 5. Click Next.
 
 6. In the Add/Remove Files for the source files, type dct as the function name (the provided source
-file contains the function, to be synthesized, called dct).
+  file contains the function, to be synthesized, called dct).
 
 7. Click the Add Files… button, select dct.c file from the **c:\xup\hls\labs\lab3** folder, and then click
-Open.
+  Open.
 
 8. Click Next.
 
 9. In the Add/Remove Files for the testbench, click the **Add Files…** button, select **dct_test.c**, in.dat,
-out.golden.dat files from the c:\xup\hls\labs\lab3 folder and click Open.
+  out.golden.dat files from the c:\xup\hls\labs\lab3 folder and click Open.
 
 10. Click Next.
 
 11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
-period as 10. Leave Uncertainty field blank.
+    period as 10. Leave Uncertainty field blank.
 
 12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
-select xc7z020clg400-1.
+    select xc7z020clg400-1.
 
 13. Click Finish.
 
 14. Double-click on the **dct.c** under the source folder to open its content in the information pane.
     <p align="center">
-    <img src ="./images/lab3/Figure2.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure2.png">
     </p>
     <p align = "center">
     <i>The design under consideration</i>
     </p>
-The top-level function dct, is defined at line 78. It implements 2D DCT algorithm by first
-processing each row of the input array via a 1D DCT then processing the columns of the resulting
-array through the same 1D DCT. It calls read_data, dct_2d, and write_data functions.
+
+    The top-level function dct, is defined at line 78. It implements 2D DCT algorithm by first
+    processing each row of the input array via a 1D DCT then processing the columns of the resulting
+    array through the same 1D DCT. It calls read_data, dct_2d, and write_data functions.
 
 The read_data function is defined at line 54 and consists of two loops – RD_Loop_Row and
 RD_Loop_Col. The write_data function is defined at line 66 and consists of two loops to perform
@@ -94,8 +96,9 @@ transpose.
 Finally, dct_1d function, defined at line 4, uses dct_coeff_table and performs the required function
 by implementing a basic iterative form of the 1D Type-II DCT algorithm. Following figure shows the function hierarchy on the left-hand side, the loops in the order they are executes and the flow
 of data on the right-hand side.
+
     <p align="center">
-    <img src ="./images/lab3/Figure3.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure3.png">
     </p>
     <p align = "center">
     <i>Design hierarchy and dataflow</i>
@@ -115,16 +118,18 @@ Note that the Synthesis Report section in the Explorer view only shows dct_1d.rp
 and dct.rpt entries. The read_data and write_data functions reports are not listed. This is
 because these two functions are inlined. Verify this by scrolling up into the Vivado HLS Console
 view.
+
     <p align="center">
-    <img src ="./images/lab3/Figure4.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure4.png">
     </p>
     <p align = "center">
     <i>Inlining of read_data and write_data functions</i>
     </p>
+
 3. The Synthesis Report shows the performance and resource estimates as well as estimated
 latency in the design. Note that the design is not optimized nor is pipelined.
     <p align="center">
-    <img src ="./images/lab3/Figure5.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure5.png">
     </p>
     <p align = "center">
     <i>Synthesis report</i>
@@ -147,16 +152,17 @@ Number of LUTs used:
 
 5. The report also shows the top-level interface signals generated by the tools.
     <p align="center">
-    <img src ="./images/lab3/Figure6.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure6.png">
     </p>
     <p align = "center">
     <i>Generated interface signals</i>
     </p> 
-You can see ap_clk, ap_rst are automatically added. The ap_start, ap_done, ap_idle, and
-ap_ready are top-level signals used as handshaking signals to indicate when the design is able to
-accept next computation command (ap_idle), when the next computation is started (ap_start),
-and when the computation is completed (ap_done). The top-level function has input and output
-arrays, hence an ap_memory interface is generated for each of them.
+
+    You can see ap_clk, ap_rst are automatically added. The ap_start, ap_done, ap_idle, and
+    ap_ready are top-level signals used as handshaking signals to indicate when the design is able to
+    accept next computation command (ap_idle), when the next computation is started (ap_start),
+    and when the computation is completed (ap_done). The top-level function has input and output
+    arrays, hence an ap_memory interface is generated for each of them.
 
 6. Open dct_1d.rpt and dct_2d.rpt files either using the Explorer view or by using a hyperlink at the
 bottom of the dct.rpt in the information view. The report for dct_2d clearly indicates that most of
@@ -177,13 +183,15 @@ A C/RTL Co-simulation Dialog box will open.
 The RTL Co-simulation will run, generating and compiling several files, and then simulating the
 design. In the console window you can see the progress and also a message that the test is
 passed.
+
     <p align="center">
-    <img src ="./images/lab3/Figure7.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure7.png">
     </p>
     <p align = "center">
     <i>RTL Co-Simulation results</i>
     </p>
-    
+​    
+
 ### Apply PIPELINE Directive
 
 #### Create a new solution by copying the previous solution settings. Apply the PIPELINE directive to DCT_Inner_Loop, Xpose_Row_Inner_Loop, Xpose_Col_Inner_Loop, RD_Loop_Col, and WR_Loop_Col. Generate the solution and analyze the output.
@@ -191,48 +199,50 @@ passed.
 1. Select **Project > New Solution** or click on the button from the tools bar buttons.
 
 2. A Solution Configuration dialog box will appear. Click the **Finish** button (with copy from Solution1
-selected).
+  selected).
 
 3. Make sure that the **dct.c** source is opened in the information pane and click on the **Directive** tab.
 
 4. Select **DCT_Inner_Loop** of the dct_1d function in the Directive pane, right-click on it and select
-**Insert Directive**...
+  **Insert Directive**...
 
 5. A pop-up menu shows up listing various directives. Select **PIPELINE** directive.
 
 6. Leave II (Initiation Interval) blank as Vivado HLS will try for an II=1, one new input every clock
-cycle.
+  cycle.
 
 7. Click OK.
 
 8. Similarly, apply the **PIPELINE** directive to **Xpose_Row_Inner_Loop** and
-**Xpose_Col_Inner_Loop** of the dct_2d function, and **RD_Loop_Col** of the read_data function,
-and **WR_Loop_Col** of the write_data function. At this point, the Directive tab should look like as
-follows.
-    <p align="center">
-    <img src ="./images/lab3/Figure8.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>PIPELINE directive applied</i>
-    </p>
+  **Xpose_Col_Inner_Loop** of the dct_2d function, and **RD_Loop_Col** of the read_data function,
+  and **WR_Loop_Col** of the write_data function. At this point, the Directive tab should look like as
+  follows.
+
+   <p align="center">
+   <img src ="./images/lab3/Figure8.png">
+   </p>
+   <p align = "center">
+   <i>PIPELINE directive applied</i>
+   </p>
 9. Click on the **Synthesis** button.
 
 10. When the synthesis is completed, select **Project > Compare Reports…** to compare the two solutions.
 
 11. Select Solution1 and Solution2 from the Available Reports, click on the Add>> button, and then
-click OK.
+    click OK.
 
 12. Observe that the latency reduced from 3959 to 1851 clock cycles.
     <p align="center">
-    <img src ="./images/lab3/Figure9.png" width="30%" height="40%"/>
+    <img src ="./images/lab3/Figure9.png">
     </p>
     <p align = "center">
     <i>Performance comparison after pipelining</i>
     </p>
 13. Scroll down in the comparison report to view the resources utilization. Observe that the FFs
-and/or LUTs utilization increased whereas BRAM and DSP48E remained same.
+    and/or LUTs utilization increased whereas BRAM and DSP48E remained same.
+
     <p align="center">
-    <img src ="./images/lab3/Figure10.png" width="20%" height="33%"/>
+    <img src ="./images/lab3/Figure10.png">
     </p>
     <p align = "center">
     <i>Resources utilization after pipelining</i>
@@ -243,43 +253,44 @@ and/or LUTs utilization increased whereas BRAM and DSP48E remained same.
 1. Click on the Analysis perspective button.
 
 2. In the Module Hierarchy, select the dct entry and observe the RD_Loop_Row_RD_Loop_Col and
-WR_Loop_Row_WR_Loop_Col entries. These are two nested loops flattened and given the new
-names formed by appending inner loop name to the ouer loop name. You can also verify this by
-looking in the Console view message.
-    <p align="center">
-    <img src ="./images/lab3/Figure11.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>The console view content indicating loops flattening</i>
-    </p>
-    <p align="center">
-    <img src ="./images/lab3/Figure12.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>The performance profile at the dct function level</i>
-    </p>
+  WR_Loop_Row_WR_Loop_Col entries. These are two nested loops flattened and given the new
+  names formed by appending inner loop name to the ouer loop name. You can also verify this by
+  looking in the Console view message.
+   <p align="center">
+   <img src ="./images/lab3/Figure11.png">
+   </p>
+   <p align = "center">
+   <i>The console view content indicating loops flattening</i>
+   </p>
+   <p align="center">
+   <img src ="./images/lab3/Figure12.png">
+   </p>
+   <p align = "center">
+   <i>The performance profile at the dct function level</i>
+   </p>
 
 3. In the Module Hierarchy tab, expand **dct > dct_2d**. Notice that the most of the latency occurs is
-in dct_2d function.
+  in dct_2d function.
 
 4. In the Module Hierarchy tab, notice that there still hierarchy exists in the dct_2d module. Expand
-**dct > dct_2d > dct 12d**, and select the dct_1d entry.
-    <p align="center">
-    <img src ="./images/lab3/Figure13.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>The dct_1d function performance profile</i>
-    </p>
+  **dct > dct_2d > dct 12d**, and select the dct_1d entry.
+   <p align="center">
+   <img src ="./images/lab3/Figure13.png">
+   </p>
+   <p align = "center">
+   <i>The dct_1d function performance profile</i>
+   </p>
 
 5. In the Performance Profile tab, select the DCT_Inner_Loop entry, right-click on the node_60
-(write) block in the C3 state in the Performance view, and select Goto Source. Notice that line 19
-is highlighted which is preventing the flattening of the DCT_Outer_Loop.
-    <p align="center">
-    <img src ="./images/lab3/Figure14.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Understanding what is preventing DCT_Outer_Loop flattening</i>
-    </p>
+  (write) block in the C3 state in the Performance view, and select Goto Source. Notice that line 19
+  is highlighted which is preventing the flattening of the DCT_Outer_Loop.
+
+   <p align="center">
+   <img src ="./images/lab3/Figure14.png">
+   </p>
+   <p align = "center">
+   <i>Understanding what is preventing DCT_Outer_Loop flattening</i>
+   </p>
 6. Switch to the Synthesis perspective.
 
 ### Create a new solution by copying the previous solution settings. Apply fine-grain parallelism of performing multiply and add operations of the inner loop of dct_1d using PIPELINE directive by moving the PIPELINE directive from inner loop to the outer loop of dct_1d. Generate the solution and analyze the output.
@@ -289,16 +300,16 @@ is highlighted which is preventing the flattening of the DCT_Outer_Loop.
 2. A Solution Configuration dialog box will appear. Click the **Finish** button (with Solution2 selected).
 
 3. Select PIPELINE directive of **DCT_Inner_Loop** of the dct_1d function in the Directive pane,
-right-click on it and select **Remove** Directive.
+  right-click on it and select **Remove** Directive.
 
 4. Select **DCT_Outer_Loop** of the dct_1d function in the Directive pane, right-click on it and select
-Insert Directive...
+  Insert Directive...
 
 5. A pop-up menu shows up listing various directives. Select **PIPELINE** directive.
 
 6. Click **OK**.
     <p align="center">
-    <img src ="./images/lab3/Figure15.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure15.png">
     </p>
     <p align = "center">
     <i>PIPELINE directive applied to DCT_Outer_Loop</i>
@@ -312,24 +323,25 @@ operate concurrently.
 7. Click on the **Synthesis** button.
 
 8. When the synthesis is completed, select **Project > Compare Reports…** to compare the two
-solutions.
+  solutions.
 
 9. Select Solution2 and Solution3 from the **Available Reports**, click on the **Add>>** button, and then
-click OK.
+  click OK.
 
 10. Observe that the latency reduced from 1851 to 875 clock cycles.
     <p align="center">
-    <img src ="./images/lab3/Figure16.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure16.png">
     </p>
     <p align = "center">
     <i>Performance comparison after pipelining</i>
     </p>
-    
+
 11. Scroll down in the comparison report to view the resources utilization. Observe that the utilization
-of all resources (except BRAM) increased. Since the DCT_Inner_Loop was unrolled, the parallel
-computation requires 8 DSP48E.
+    of all resources (except BRAM) increased. Since the DCT_Inner_Loop was unrolled, the parallel
+    computation requires 8 DSP48E.
+
     <p align="center">
-    <img src ="./images/lab3/Figure17.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure17.png">
     </p>
     <p align = "center">
     <i>Resources utilization after pipelining</i>
@@ -344,19 +356,19 @@ loop fed, however the input arrays to the dct_1d function were not automatically
 The reason the II is four (4) rather than the eight (8) one might expect, is because Vivado HLS
 automatically uses dual-port RAMs, when beneficial to scheduling operations.
     <p align="center">
-    <img src ="./images/lab3/Figure18.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure18.png">
     </p>
     <p align = "center">
     <i>Increased resource utilization of dct_1d</i>
     </p>
     <p align="center">
-    <img src ="./images/lab3/Figure19.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure19.png">
     </p>
     <p align = "center">
     <i> Automatic partitioning of dct_coeff_table</i>
     </p>
     <p align="center">
-    <img src ="./images/lab3/Figure20.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure20.png">
     </p>
     <p align = "center">
     <i>Initiation interval of 4</i>
@@ -365,24 +377,25 @@ automatically uses dual-port RAMs, when beneficial to scheduling operations.
 #### Perform design analysis by switching to the Analysis perspective and looking at the dct_1d performance view.
 
 1. Switch to the Analysis perspective, expand the Module Hierarchy entries, and select the dct_1d
-entry.
+  entry.
 
 2. Expand, if necessary, the **Profile** tab entries and notice that the DCT_Outer_Loop is now
-pipelined and there is no DCT_Inner_Loop entry.
-    <p align="center">
-    <img src ="./images/lab3/Figure21.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>DCT_Outer_Loop flattening</i>
-    </p>
+  pipelined and there is no DCT_Inner_Loop entry.
+   <p align="center">
+   <img src ="./images/lab3/Figure21.png">
+   </p>
+   <p align = "center">
+   <i>DCT_Outer_Loop flattening</i>
+   </p>
 3. Select the dct_1d entry in the Module Hierarchy tab and observe that the DCT_Outer_Loop
-spans over eight states in the Performance view.
-    <p align="center">
-    <img src ="./images/lab3/Figure22.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>The Performance view of the DCT_Outer_Loop function</i>
-    </p>
+  spans over eight states in the Performance view.
+
+   <p align="center">
+   <img src ="./images/lab3/Figure22.png">
+   </p>
+   <p align = "center">
+   <i>The Performance view of the DCT_Outer_Loop function</i>
+   </p>
 
 4. Switch to the Synthesis perspective.
 
@@ -405,7 +418,7 @@ function).
 
 5. Make sure that the type is complete. Enter **2** in the dimension field and click OK.
     <p align="center">
-    <img src ="./images/lab3/Figure23.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure23.png">
     </p>
     <p align = "center">
     <i>Applying ARRAY_PARTITION directive to memory buffer</i>
@@ -415,26 +428,27 @@ function).
 7. Click on the **Synthesis** button.
 
 8. When the synthesis is completed, select **Project > Compare Reports…** to compare the two
-solutions.
+  solutions.
 
 9. Select Solution3 and Solution4 from the Available Reports, and click on the **Add>>** button.
 
 10. Observe that the latency reduced from 875 to 509 clock cycles.
     <p align="center">
-    <img src ="./images/lab3/Figure24.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure24.png">
     </p>
     <p align = "center">
     <i>Performance comparison after array partitioning</i>
     </p>
 
 11. Scroll down in the comparison report to view the resources utilization. Observe the increase in
-the FF resource utilization (almost double).
-    <p align="center">
-    <img src ="./images/lab3/Figure25.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Resources utilization after array partitioning</i>
-    </p>
+     the FF resource utilization (almost double).
+
+     <p align="center">
+     <img src ="./images/lab3/Figure25.png">
+     </p>
+     <p align = "center">
+     <i>Resources utilization after array partitioning</i>
+     </p>
 12. Expand the Loop entry in the **dct.rpt** entry and observe that the Pipeline II is now 1.
 
 #### Perform resource analysis by switching to the Analysis perspective and looking at the dct resources profile view.
@@ -447,7 +461,7 @@ the FF resource utilization (almost double).
 consumed by instances. The buf_2d_in array is partitioned into multiple memories and most of
 the operations are done in addition and comparison.
     <p align="center">
-    <img src ="./images/lab3/Figure26.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure26.png">
     </p>
     <p align = "center">
     <i>Resource profile after partitioning buffers</i>
@@ -475,7 +489,7 @@ the operations are done in addition and comparison.
 
 8. Observe that dataflow type pipeline throughput is listed in the Performance Estimates
     <p align="center">
-    <img src ="./images/lab3/Figure27.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure27.png">
     </p>
     <p align = "center">
     <i>Performance estimate after DATAFLOW directive applied</i>
@@ -488,20 +502,20 @@ which are down through the design hierarchy. Only loops and functions exposed at
 of the design will get benefit from dataflow optimization.
 
 9. Scrolling down into the Area Estimates, observe that the number of BRAM_18K required at the
-top-level remained at 3.
-    <p align="center">
-    <img src ="./images/lab3/Figure28.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Resource estimate with DATAFLOW directive applied</i>
-    </p>
+  top-level remained at 3.
+   <p align="center">
+   <img src ="./images/lab3/Figure28.png">
+   </p>
+   <p align = "center">
+   <i>Resource estimate with DATAFLOW directive applied</i>
+   </p>
 
 10. Look at the console view and notice that dct_coeff_table is automatically partitioned in dimension
 2. The buf_2d_in and col_inbuf arrays are partitioned as we had applied the directive in the
 previous run. The dataflow is applied at the top-level which created channels between top-level
 functions read_data, dct_2d, and write_data.
     <p align="center">
-    <img src ="./images/lab3/Figure29.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure29.png">
     </p>
     <p align = "center">
     <i>Console view of synthesis process after DATAFLOW directive applied</i>
@@ -519,8 +533,9 @@ interval of the top-level function dct, is less than the sum of the intervals of
 and write_data functions indicating that they operate in parallel and dct_2d is the limiting factor.
 From the Performance Profile tab it can be seen that dct_2d is not completely operating in
 parallel as Row_DCT_Loop and Col_DCT_Loop were not pipelined.
+
     <p align="center">
-    <img src ="./images/lab3/Figure30.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure30.png">
     </p>
     <p align = "center">
     <i>Performance analysis after the DATAFLOW directive</i>
@@ -558,16 +573,16 @@ dissolved.
 8. Examine the synthesis log to see what transformations were applied automatically.
 
 * The dct_1d function calls are now automatically inlined into the loops from which they are
-called, which allows the loop nesting to be flattened automatically.
+  called, which allows the loop nesting to be flattened automatically.
 * Note also that the DSP48E usage has doubled (from 8 to 16). This is because, previously a
-single instance of dct_1d was used to do both row and column processing; now that the row
-and column loops are executing concurrently, this can no longer be the case and two copies
-of dct_1d are required: Vivado HLS will seek to minimize the number of clocks, even if it
-means increasing the area.
+  single instance of dct_1d was used to do both row and column processing; now that the row
+  and column loops are executing concurrently, this can no longer be the case and two copies
+  of dct_1d are required: Vivado HLS will seek to minimize the number of clocks, even if it
+  means increasing the area.
 * BRAM usage has increased once again (from 4 to 6), due to ping-pong buffering between
 more dataflow processes.
     <p align="center">
-    <img src ="./images/lab3/Figure31.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure31.png">
     </p>
     <p align = "center">
     <i>Console view after INLINE directive applied to dct_2d</i>
@@ -581,7 +596,7 @@ dct_Loop_Xpose_Col_Outer_Loop_proc since the dct_2d function is inlined. Also ob
 the functions are operating in parallel, yielding the top-level function interval (throughput) of 106
 clock cycles.
     <p align="center">
-    <img src ="./images/lab3/Figure32.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure32.png">
     </p>
     <p align = "center">
     <i>Performance analysis after the INLINE directive</i>
@@ -598,15 +613,15 @@ clock cycles.
 2. A Solution Configuration dialog box will appear. Click the Finish button (with Solution6 selected).
 
 3. Select **PARTITION** directive applied to the buf_2d_in array of the dct function in the Directive
-pane, right-click, and select **Modify Directive**. Select **ARRAY_RESHAPE** directive, enter **2** as
-the dimension, and click OK.
+  pane, right-click, and select **Modify Directive**. Select **ARRAY_RESHAPE** directive, enter **2** as
+  the dimension, and click OK.
 
 4. Similarly, change PARTITION directive applied to the col_inbuf array of the dct_2d function in
-the Directive pane, to ARRAY_RESHAPE with the dimension of 2.
+  the Directive pane, to ARRAY_RESHAPE with the dimension of 2.
 
 5. Assign the **ARRAY_RESHAPE** directive with dimension of 2 to the **dct_coeff_table** array.
     <p align="center">
-    <img src ="./images/lab3/Figure33.png" width="60%" height="80%"/>
+    <img src ="./images/lab3/Figure33.png">
     </p>
     <p align = "center">
     <i>RESHAPE directive applied</i>

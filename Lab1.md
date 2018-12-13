@@ -25,7 +25,7 @@ After completing this lab, you will be able to:
 
 1. Launch Vivado HLS: Select **Start > All Programs > Xilinx Design Tools > Vivado 2018.2 > Vivado HLS > Vivado HLS 2018.2**
     <p align="center">
-    <img src ="./images/lab1/Figure1.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure1.png">
     </p>
     <p align = "center">
     <i>Getting Started view of Vivado-HLS</i>
@@ -36,7 +36,7 @@ After completing this lab, you will be able to:
 
 4. For Project Name, type **matrixmul.prj**
     <p align="center">
-    <img src ="./images/lab1/Figure2.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure2.png">
     </p>
     <p align = "center">
     <i>New Vivado HLS Project wizard</i>
@@ -61,7 +61,7 @@ Click the … button in the Part Selection section.
 
 13. In the Device Selection Dialog page, select Parts Specify field, and select the following filters to select the **xc7z020clg400-1** part and click **OK**.
     <p align="center">
-    <img src ="./images/lab1/Figure3.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure3.png">
     </p>
     <p align = "center">
     <i>Using Parts Specify option in Part Selection Dialog</i>
@@ -70,15 +70,15 @@ Click the … button in the Part Selection section.
 
 You will see the created project in the Explorer view. Expand various sub-folders to see the entries under each sub-folder.
     <p align="center">
-    <img src ="./images/lab1/Figure4.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure4.png">
     </p>
     <p align = "center">
     <i>Explorer Window</i>
     </p>
- 
+
 15. Double-click on the matrixmul.cpp under the source folder to open its content in the information pane.
     <p align="center">
-    <img src ="./images/lab1/Figure5.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure5.png">
     </p>
     <p align = "center">
     <i>The Design under consideration</i>
@@ -95,7 +95,7 @@ It can be seen that the design is a matrix multiplication implementation, consis
 
 2. The files will be compiled and you will see the output in the Console window.
     <p align="center">
-    <img src ="./images/lab1/Figure6.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure6.png">
     </p>
     <p align = "center">
     <i>Program output</i>
@@ -118,7 +118,7 @@ The application will be compiled with –g option to include the debugging infor
 
 2. The Debug perspective will show the matrixmul_test.cpp in the source view, argc and argv variables defined in the Variables view, Outline view showing the objects which are in the current scope, thread created and the program suspended at the main() function entry point.
     <p align="center">
-    <img src ="./images/lab1/Figure7.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure7.png">
     </p>
     <p align = "center">
     <i>A Debug perspective</i>
@@ -129,16 +129,17 @@ output “{“ in the output console window. This will set a break-point at line
 
 The breakpoint is marked with a blue circle, and a tick
     <p align="center">
-    <img src ="./images/lab1/Figure8.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure8.png">
     </p>
     <p align = "center">
     </p>
-    
+​    
+
 4. Similarly, set a breakpoint at line 101 on the matrixmul() function
 
 5. Using the **Step Over** (F6) button several times, observe the execution progress, and observe the variable values updating, as well as computed software result.
     <p align="center">
-    <img src ="./images/lab1/Figure9.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure9.png">
     </p>
     <p align = "center">
     <i>Debugger’s intermediate output view</i>
@@ -147,7 +148,7 @@ The breakpoint is marked with a blue circle, and a tick
 
 7. Observe the following computed software result in the variables view.
     <p align="center">
-    <img src ="./images/lab1/Figure10.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure10.png">
     </p>
     <p align = "center">
     <i>Software computed result</i>
@@ -158,7 +159,7 @@ The breakpoint is marked with a blue circle, and a tick
 
 10. The program execution will suspend at line 105 as we had set a breakpoint. Observe the software and hardware (function) computed results in the Variables view.
     <p align="center">
-    <img src ="./images/lab1/Figure11.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure11.png">
     </p>
     <p align = "center">
     <i>Computed results</i>
@@ -180,20 +181,21 @@ the results as seen earlier (Figure 7).
 
 3. When synthesis is completed, the Synthesis Results will be displayed along with the Outline pane. Using the Outline pane, one can navigate to any part of the report with a simple click.
     <p align="center">
-    <img src ="./images/lab1/Figure12.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure12.png">
     </p>
     <p align = "center">
     <i>Report view after synthesis is completed</i>
     </p>
-    
+
 4. If you expand **solution1** in Explorer, several generated files including report files will become accessible.
     <p align="center">
-    <img src ="./images/lab1/Figure13.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure13.png">
     </p>
     <p align = "center">
     <i>Explorer view after the synthesis process</i>
     </p>
     
+
 Note that when the syn folder under the Solution1 folder is expanded in the Explorer view, it will show report, systemC, verilog, and vhdl sub-folders under which report files, and generated source (vhdl, verilog, header, and cpp) files. By double-clicking any of these entries will open the corresponding file in the information pane.
 
 Also note that if the target design has hierarchical functions, reports corresponding to lower-level functions are also created.
@@ -204,24 +206,25 @@ Also note that if the target design has hierarchical functions, reports correspo
 
 **Question1:**
 
-Estimated clock period:
+​	Estimated clock period:
 
-Worst case latency:
+​	Worst case latency:
 
-Number of DSP48E used:
+​	Number of DSP48E used:
 
-Number of FFs used:
+​	Number of FFs used:
 
-Number of LUTs used:
+​	Number of LUTs used:
 
 7. The report also shows the top-level interface signals generated by the tools.
     <p align="center">
-    <img src ="./images/lab1/Figure14.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure14.png">
     </p>
     <p align = "center">
     <i>Generated interface signals</i>
     </p>
-You can see ap_clk, ap_rst and ap_ idle and ap_ready control signals are automatically added to the design by default. These signals are used as handshaking signals to indicate when the design is ready to begin the next computation command (ap_ready), when the next computation is started (ap_start), and when the computation is completed (ap_done). Other signals are generated based on the input and output signals in the design and their default or specified interfaces.
+
+    You can see ap_clk, ap_rst and ap_ idle and ap_ready control signals are automatically added to the design by default. These signals are used as handshaking signals to indicate when the design is ready to begin the next computation command (ap_ready), when the next computation is started (ap_start), and when the computation is completed (ap_done). Other signals are generated based on the input and output signals in the design and their default or specified interfaces.
 
 ### Analyze using Analysis Perspective
 
@@ -229,41 +232,44 @@ You can see ap_clk, ap_rst and ap_ idle and ap_ready control signals are automat
 
 1. Select **Solution > Open Analysis Perspective** or click on Analysis button on tools bar to open the analysis viewer.
 
-The Analysis perspective consists of 4 panes as shown below. Note that the module and loops hierarchies are displayed unexpanded by default.
+   The Analysis perspective consists of 4 panes as shown below. Note that the module and loops hierarchies are displayed unexpanded by default.
 
-The Module Hierarchy pane shows both the performance and area information for the entire design and can be used to navigate through the hierarchy. The Performance Profile pane is visible and shows the performance details for this level of hierarchy. The information in these two panes is similar to the information reviewed earlier in the synthesis report.
+   The Module Hierarchy pane shows both the performance and area information for the entire design and can be used to navigate through the hierarchy. The Performance Profile pane is visible and shows the performance details for this level of hierarchy. The information in these two panes is similar to the information reviewed earlier in the synthesis report.
 
-The Schedule Viewer is also shown in the right-hand side pane. This view shows how the operations in this particular block are scheduled into clock cycles.
-    <p align="center">
-    <img src ="./images/lab1/Figure15.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Analysis perspective</i>
-    </p>
-    
+   The Schedule Viewer is also shown in the right-hand side pane. This view shows how the operations in this particular block are scheduled into clock cycles.
+       <p align="center">
+       <img src ="./images/lab1/Figure15.png">
+       </p>
+       <p align = "center">
+       <i>Analysis perspective</i>
+       </p>
+   ​    
+
 2. Click on ‘>’ of loop Row to expand, and then similarly click on sub-loops Col and Product to fullyexpand the loop hierarchy.
     <p align="center">
-    <img src ="./images/lab1/Figure16.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure16.png">
     </p>
     <p align = "center">
     <i>Performance matrix showing top-level Row operation</i>
     </p>
-From this we can see that in the first state (C1) of the Row the loop exit condition is checked and there is an add operation performed. This addition is likely the counter to count the loop iterations, and we can confirm this.
+
+    From this we can see that in the first state (C1) of the Row the loop exit condition is checked and there is an add operation performed. This addition is likely the counter to count the loop iterations, and we can confirm this.
 
 3. Select the block for the adder in state C1, right-click and select Goto Source.
 
 The source code pane will be opened, highlighting line 75 where the Row loop index is being tested and incremented. In the next state (C2) it starts to execute the Col loop.
-    <p align="center">
-    <img src ="./images/lab1/Figure17.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Cross probing into the source file</i>
-    </p>
+​    <p align="center">
+​    <img src ="./images/lab1/Figure17.png" width="60%" height="80%"/>
+​    </p>
+​    <p align = "center">
+​    <i>Cross probing into the source file</i>
+​    </p>
+
 4. Click on the C2-8 cell in the Col loop to see the source code highlighting (line 79) update.
 
 5. Expand the Performance Profile hierarchy and note iteration latencies, Trip counts, and overall latencies for each of the nested loops.
     <p align="center">
-    <img src ="./images/lab1/Figure18.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure18.png">
     </p>
     <p align = "center">
     <i>The Performance Profile output</i>
@@ -273,7 +279,7 @@ The source code pane will be opened, highlighting line 75 where the Row loop ind
 
 7. Select the Resource Profile tab and observe various resources and where they have been used. You can expand Expressions and Registers sections to see how the resources are being used by which operations.
     <p align="center">
-    <img src ="./images/lab1/Figure19.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure19.png">
     </p>
     <p align = "center">
     <i>The Resource Profile tab view</i>
@@ -287,17 +293,21 @@ The source code pane will be opened, highlighting line 75 where the Row loop ind
 
 1. Select **Solution > Run C/RTL Cosimulation** or if you are in the synthesis view, click  on the check mark toolbar button to open the dialog box so the desired simulations can be selected and run.
 
-A C/RTL Co-simulation Dialog box will open.
+   A **C/RTL Co-simulation Dialog box** will open.
 
 2. Make sure the **VHDL** option is selected.
 
 This allows the simulation to be performed using VHDL. To perform the verification using Verilog, you can select Verilog and choose the simulator from the drop-down menu or let the tools use the first simulator that appears in the PATH variable.
-    <p align="center">
-    <img src ="./images/lab1/Figure20.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>A C/RTL Co-simulation Dialog</i>
-    </p>
+
+<p align="center">
+<img src ="./images/lab1/Figure20.png">
+</p>
+<p align = "center">
+<i>A C/RTL Co-simulation Dialog</i>
+</p>
+
+
+
 3. Click OK to run the VHDL simulation.
 
 The C/RTL Co-simulation will run, generating and compiling several files, and then simulating the design. It goes through three stages.
@@ -309,12 +319,14 @@ simulation is then performed
 
 In the console window you can see the progress and also a message that the test is passed.
 This eliminates writing a separate testbench for the synthesized design.
-    <p align="center">
-    <img src ="./images/lab1/Figure21.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Console view showing simulation progress</i>
-    </p>
+
+<p align="center">
+<img src ="./images/lab1/Figure21.png">
+</p>
+<p align = "center">
+<i>Console view showing simulation progress</i>
+</p>
+
 4. Once the simulation verification is completed, the simulation report tab will open showing the
 results. The report indicates if the simulation passed or failed. In addition, the report indicates the
 measured latency and interval.
@@ -322,12 +334,12 @@ measured latency and interval.
 Since we have selected only VHDL, the result shows the latencies and interval (initiation) which
 indicates after how many clock cycles later the next input can be provided. Since the design is
 not pipelined, it will be latency+1 clock cycles.
-    <p align="center">
-    <img src ="./images/lab1/Figure22.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Co-simulation results</i>
-    </p>
+​    <p align="center">
+​    <img src ="./images/lab1/Figure22.png">
+​    </p>
+​    <p align = "center">
+​    <i>Co-simulation results</i>
+​    </p>
 
 ### Viewing Simulation Results in Vivado
 
@@ -337,22 +349,25 @@ not pipelined, it will be latency+1 clock cycles.
 
 2. Click on the **Verilog RTL** Selection option, leaving Verilog/VHDL Simulator Section option to Auto.
     <p align="center">
-    <img src ="./images/lab1/Figure23.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure23.png">
     </p>
     <p align = "center">
     <i>Setting up for Verilog simulation and dump trace</i>
     </p>
-When RTL verification completes the co-simulation report automatically opens showing the Verilog simulation has passed (and the measured latency and interval). In addition, because the Dump Trace option was used and Verilog was selected, two trace files entries can be seen in the Verilog simulation directory.
+
+    When RTL verification completes the co-simulation report automatically opens showing the Verilog simulation has passed (and the measured latency and interval). In addition, because the Dump Trace option was used and Verilog was selected, two trace files entries can be seen in the Verilog simulation directory.
     <p align="center">
-    <img src ="./images/lab1/Figure24.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure24.png">
     </p>
     <p align = "center">
     <i>Explorer view after the Verilog RTL co-simulation run</i>
     </p>
-The Co-simulation report shows the test was passed for Verilog along with latency and Interval
-results.
+
+    The Co-simulation report shows the test was passed for Verilog along with latency and Interval
+    results.
+
     <p align="center">
-    <img src ="./images/lab1/Figure25.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure25.png">
     </p>
     <p align = "center">
     <i>Cosimulation report</i>
@@ -372,25 +387,26 @@ Similarly, do the same for b_address0 and res_address0 signals.
 4. Similarly, set the a_q0, b_q0, and res_d0 radix to Signed Decimal.
 
 You should see the output similar to shown below.
-    <p align="center">
-    <img src ="./images/lab1/Figure26.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Full waveform showing iteration worth simulation</i>
-    </p>
+​    <p align="center">
+​    <img src ="./images/lab1/Figure26.png">
+​    </p>
+​    <p align = "center">
+​    <i>Full waveform showing iteration worth simulation</i>
+​    </p>
 Note that as soon as ap_start is asserted, ap_idle has been de-asserted indicating that the
 design is in computation mode. The ap_idle signal remains de-asserted until ap_done is
 asserted, indicating completion of the process. This indicates 79 clock cycles latency.
 
 5. Using the Zoom In button, view area of ~160 ns and ~550 ns.
     <p align="center">
-    <img src ="./images/lab1/Figure27.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure27.png">
     </p>
     <p align = "center">
     <i>Zoomed view</i>
     </p>
-Observe that the design expects element data by providing a_address0, a_ceo, b_address0,
-b_ceo signals and outputs result using res_d0, res_we0, and res_ce0.
+
+    Observe that the design expects element data by providing a_address0, a_ceo, b_address0,
+    b_ceo signals and outputs result using res_d0, res_we0, and res_ce0.
 
 6. View various part of the simulation and try to understand how the design works.
 
@@ -405,12 +421,12 @@ close the program without saving.
 the desired implementation can be run.
 
 An Export RTL Dialog box will open.
-    <p align="center">
-    <img src ="./images/lab1/Figure28.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>A Export RTL Dialog box</i>
-    </p>
+​    <p align="center">
+​    <img src ="./images/lab1/Figure28.png">
+​    </p>
+​    <p align = "center">
+​    <i>A Export RTL Dialog box</i>
+​    </p>
 
 With default settings (shown above), the IP packaging process will run and create a package for
 the Vivado IP Catalog. Another option available from the Format Selection drop-down menu, is to
@@ -420,7 +436,7 @@ create System Generator for DSP.
 
 3. Click on the Vivado synthesis, place and route check box to run the implementation tool.
     <p align="center">
-    <img src ="./images/lab1/Figure29.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure29.png">
     </p>
     <p align = "center">
     <i>Selecting Evaluate options</i>
@@ -432,19 +448,21 @@ You can observe the progress in the Vivado HLS Console window. It goes through s
 * Exporting RTL as an IP in the IP-XACT format
 * RTL evaluation, since we selected Evaluate option 1.Goes through Synthesis 2.Goes through Placement and Routing
     <p align="center">
-    <img src ="./images/lab1/Figure30.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure30.png">
     </p>
     <p align = "center">
     <i>Console view</i>
     </p>
-When the run is completed the implementation report will be displayed in the information pane.
+
+    When the run is completed the implementation report will be displayed in the information pane.
     <p align="center">
-    <img src ="./images/lab1/Figure31.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure31.png">
     </p>
     <p align = "center">
     <i>Implementation results in Vivado HLS </i>
     </p>
-Observe that the timing constraint was met, the achieved period, and the type and amount of resources used.
+
+    Observe that the timing constraint was met, the achieved period, and the type and amount of resources used.
     <p align="center">
     <img src ="./images/lab1/Figure32.png" width="30%" height="40%"/>
     </p>
@@ -458,15 +476,17 @@ implementation runs were made for it.
 It includes project.xpr file (the Vivado project file), matrixmul.xdc file (timing constraint file),
 project.runs folder (which includes synth_1 and impl_1 sub-folders created by the synthesis and
 implementation runs) among others.
+
     <p align="center">
-    <img src ="./images/lab1/Figure33.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure33.png">
     </p>
     <p align = "center">
     <i>The implementation directory </i>
     </p>
+
 7. Expand the ip folder and observe the IP packaged as a zip file (xilinx_com_hls_matrixmul_1_0.zip), ready for adding to the Vivado IP catalog.
     <p align="center">
-    <img src ="./images/lab1/Figure34.png" width="60%" height="80%"/>
+    <img src ="./images/lab1/Figure34.png">
     </p>
     <p align = "center">
     <i>The ip folder content</i>
@@ -482,15 +502,15 @@ design. You also learned how to use the Analysis capability to understand the sc
 ### Answers
 1. Answer the following questions:
 
-Estimated clock period: 8.70 ns 
+   Estimated clock period: 8.70 ns 
 
-Worst case latency: 79 clock cycles 
+   Worst case latency: 79 clock cycles 
 
-Number of DSP48E used: 1
+   Number of DSP48E used: 1
 
-Number of FFs used: 44 
+   Number of FFs used: 44 
 
-Number of LUTs used: 184 
+   Number of LUTs used: 184 
 
 
 

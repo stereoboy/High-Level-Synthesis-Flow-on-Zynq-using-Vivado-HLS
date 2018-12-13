@@ -27,14 +27,15 @@ After completing this lab, you will be able to:
 
 3. A self-checking program (yuv_filter_test.c) is provided. Using that we can validate the design. A Makefile is also provided. Using the Makefile, the necessary source files can be compiled and the compiled program can be executed. You can examine the contents of these files and the project directory. In the Vivado HLS Command Prompt, type make to compile and execute the program. (You might need to set up the system environment variable for make command)
     <p align="center">
-    <img src ="./images/lab2/Figure1.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure1.png">
     </p>
     <p align = "center">
     <i>Validating the design</i>
     </p>
-Note that the source files (yuv_filter.c, yuv_filter_test.c, and image_aux.c) were compiled, then
-yuv_filter executable program was created, and then it was executed. The program tests the
-design and outputs Test Passed message.
+
+    Note that the source files (yuv_filter.c, yuv_filter_test.c, and image_aux.c) were compiled, then
+    yuv_filter executable program was created, and then it was executed. The program tests the
+    design and outputs Test Passed message.
 
 4. A Vivado HLS tcl script file (pynq_yuv_filter.tcl) is provided and can be used to create a Vivado HLS project.
 
@@ -48,19 +49,19 @@ The project will be created and Vivado HLS.log file will be generated.
 * Synthesizing (Generating) the design which involves scheduling and binding of each functions and sub-function (Figure 3).
 * Generating RTL of each function and sub-function in SystemC, Verilog, and VHDL languages (Figure 4).
     <p align="center">
-    <img src ="./images/lab2/Figure2.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure2.png">
     </p>
     <p align = "center">
     <i>Creating project and setting up parameters</i>
     </p>
     <p align="center">
-    <img src ="./images/lab2/Figure3.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure3.png">
     </p>
     <p align = "center">
     <i>Synthesizing (Generating) the design</i>
     </p>
     <p align="center">
-    <img src ="./images/lab2/Figure4.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure4.png">
     </p>
     <p align = "center">
     <i>Generating RTL</i>
@@ -90,7 +91,7 @@ members of input type image_t. When variables bounds are present on loops the to
 the loops cannot be determined: this impacts the ability to perform analysis using reports. Hence,
 “?” is reported for various latencies.
     <p align="center">
-    <img src ="./images/lab2/Figure5.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure5.png">
     </p>
     <p align = "center">
     <i>Latency computation</i>
@@ -101,16 +102,16 @@ the loops cannot be determined: this impacts the ability to perform analysis usi
 #### Open the source file and uncomment pragma lines, re-synthesize, and observe the resources used as well as estimated latencies. Answer the questions listed in the detailed section of this step.
 
 1. To assist in providing loop-latency estimates, Vivado HLS provides a TRIPCOUNT directive
-which allows limits on the variables bounds to be specified by the user. In this design, such
-directives have been embedded in the source code, in the form of #pragma statements.
+  which allows limits on the variables bounds to be specified by the user. In this design, such
+  directives have been embedded in the source code, in the form of #pragma statements.
 
 2. Uncomment the #pragma lines (50, 53, 90, 93, 130, 133) to define the loop bounds and save the
-file.
+  file.
 
 3. Synthesize the design by selecting **Solution > Run C Synthesis > Active Solution**. View the
 synthesis report when the process is completed.
     <p align="center">
-    <img src ="./images/lab2/Figure6.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure6.png">
     </p>
     <p align = "center">
     <i>Latency computation after applying TRIPCOUNT pragma</i>
@@ -134,7 +135,7 @@ Number of LUTs used:
 5. Scroll the Console window and note that yuv_scale function is automatically inline into the
 yuv_filter function.
     <p align="center">
-    <img src ="./images/lab2/Figure7.png" width="99%" height="99%"/>
+    <img src ="./images/lab2/Figure7.png">
     </p>
     <p align = "center">
     <i>Vivado HLS automatically inlining function</i>
@@ -148,22 +149,23 @@ components (under Utilization Estimates > Details > Component) or from the repor
 the project explorer.
 
 7. Expand the Summary of loop latency and note the latency and trip count numbers for the
-yuv_scale function. Note that the YUV_SCALE_LOOP_Y loop latency is 6X the specified
-TRIPCOUNT, implying that 6 cycles are used for each of the iteration of the loop.
-    <p align="center">
-    <img src ="./images/lab2/Figure8.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Loop latency</i>
-    </p>
+  yuv_scale function. Note that the YUV_SCALE_LOOP_Y loop latency is 6X the specified
+  TRIPCOUNT, implying that 6 cycles are used for each of the iteration of the loop.
+   <p align="center">
+   <img src ="./images/lab2/Figure8.png">
+   </p>
+   <p align = "center">
+   <i>Loop latency</i>
+   </p>
 8. You can verify this by opening an analysis perspective view, expanding the
-**YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
-    <p align="center">
-    <img src ="./images/lab2/Figure9.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Design analysis view of the YUV_SCALE_LOOP_Y loop</i>
-    </p>
+  **YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
+
+   <p align="center">
+   <img src ="./images/lab2/Figure9.png">
+   </p>
+   <p align = "center">
+   <i>Design analysis view of the YUV_SCALE_LOOP_Y loop</i>
+   </p>
 9. In the report tab, expand **Detail > Instance section** of the Utilization Estimates and click on the
 **grp_rgb2yuv_fu_244 (rgb2yuv)** entry to open the report.
 
@@ -212,26 +214,26 @@ Number of LUTs used:
 1. Select **Project > New Solution** or click on the button from the tools bar buttons.
 
 2. A Solution Configuration dialog box will appear. Note that the check boxes of Copy existing
-directives from solution and Copy custom constraints directives from solution are checked with
-Solution1 selected. Click the **Finish** button to create a new solution with the default settings.
-    <p align="center">
-    <img src ="./images/lab2/Figure10.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Creating a new Solution after copying the existing solution</i>
-    </p>
+  directives from solution and Copy custom constraints directives from solution are checked with
+  Solution1 selected. Click the **Finish** button to create a new solution with the default settings.
+   <p align="center">
+   <img src ="./images/lab2/Figure10.png">
+   </p>
+   <p align = "center">
+   <i>Creating a new Solution after copying the existing solution</i>
+   </p>
 3. Make sure that the **yuv_filter.c** source is opened and visible in the information pane, and click on
-the **Directive** tab.
+  the **Directive** tab.
 
 4. Select function **yuv_scale** in the directives pane, right-click on it and select Insert Directive...
 
 5. Click on the drop-down button of the Directive field. A pop-up menu shows up listing various
-directives. Select **INLINE** directive.
+  directives. Select **INLINE** directive.
 
 6. In the Vivado HLS Directive Editor dialog box, click on the **off** option to turn OFF the automatic
 inlining. Make sure that the Directive File is selected as destination. Click **OK**.
     <p align="center">
-    <img src ="./images/lab2/Figure11.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure11.png">
     </p>
     <p align = "center">
     <i>Turning OFF the inlining function</i>
@@ -246,14 +248,14 @@ inlining. Make sure that the Directive File is selected as destination. Click **
 7. Expand the yuv_scale in the Directives tab, right-click on YUV_SCALE_LOOP_Y object and select insert directives …, and select **PIPELINE** as the directive.
 
 8. Leave II (Initiation Interval) blank as Vivado HLS will try for an II=1, one new input every clock
-cycle.
+  cycle.
 
 9. Click OK.
 
 10. Similarly, apply the PIPELINE directive to YUV2RGB_LOOP_Y and RGB2YUV_LOOP_Y objects.
-At this point, the Directive tab should look like as follows.
+    At this point, the Directive tab should look like as follows.
     <p align="center">
-    <img src ="./images/lab2/Figure12.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure12.png">
     </p>
     <p align = "center">
     <i>PIPELINE directive applied</i>
@@ -267,19 +269,20 @@ At this point, the Directive tab should look like as follows.
 
 14. Observe that the latency reduced.
     <p align="center">
-    <img src ="./images/lab2/Figure13.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure13.png">
     </p>
     <p align = "center">
     <i>Performance comparison after pipelining</i>
     </p>
-In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration
-count, whereas in Solution2 the new total loop latency of the inner-most loop is
-loop_body_latency + loop iteration count.
+
+    In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration
+    count, whereas in Solution2 the new total loop latency of the inner-most loop is
+    loop_body_latency + loop iteration count.
 
 15. Scroll down in the comparison report to view the resources utilization. Observe that the FFs,
 LUTs, and DSP48E utilization increased whereas BRAM remained same.
     <p align="center">
-    <img src ="./images/lab2/Figure14.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure14.png">
     </p>
     <p align = "center">
     <i>Resources utilization after pipelining</i>
@@ -292,12 +295,12 @@ LUTs, and DSP48E utilization increased whereas BRAM remained same.
 1. Select **Project > New Solution** or click on button from the tools bar.
 
 2. A Solution Configuration dialog box will appear. Click the **Finish** button (with copy from Solution2
-selected).
+  selected).
 
 3. Close all inactive solution windows by selecting **Project > Close Inactive Solution Tabs**.
 
 4. Make sure that the yuv_filter.c source is opened in the information pane and select the Directive
-tab.
+  tab.
 
 5. Select function yuv_filter in the directives pane, right-click on it and select Insert Directive...
 
@@ -308,14 +311,15 @@ tab.
 8. When the synthesis is completed, the synthesis report is automatically opened.
 
 9. Observe additional information, Dataflow Type, in the Performance Estimates section is
-mentioned.
-    <p align="center">
-    <img src ="./images/lab2/Figure15.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Performance estimate after DATAFLOW directive applied</i>
-    </p>
-    
+  mentioned.
+   <p align="center">
+   <img src ="./images/lab2/Figure15.png">
+   </p>
+   <p align = "center">
+   <i>Performance estimate after DATAFLOW directive applied</i>
+   </p>
+
+   
 * The Dataflow pipeline throughput indicates the number of clocks cycles between each set of
 inputs reads. If this throughput value is less than the design latency it indicates the design
 can start processing new inputs before the currents input data are output.
@@ -326,7 +330,7 @@ processing one pixel every clock cycle.
 10. Scrolling down into the Utilization Estimates, observe that the number of BRAMs required has
 doubled. This is due to the default dataflow ping-pong buffering.
     <p align="center">
-    <img src ="./images/lab2/Figure16.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure16.png">
     </p>
     <p align = "center">
     <i>Resource estimate with DATAFLOW directive applied</i>
@@ -350,13 +354,13 @@ in ping-pong buffers where random accesses are allowed).
 2. In the Configuration Settings dialog box, select **General** and click the **Add…** button.
 
 3. Select config_dataflow as the command using the drop-down button and **fifo** as the
-default_channel. Enter **2** as the fifo_depth. Click OK.
-    <p align="center">
-    <img src ="./images/lab2/Figure17.png" width="60%" height="80%"/>
-    </p>
-    <p align = "center">
-    <i>Selecting Dataflow configuration command and FIFO as buffer</i>
-    </p>
+  default_channel. Enter **2** as the fifo_depth. Click OK.
+   <p align="center">
+   <img src ="./images/lab2/Figure17.png">
+   </p>
+   <p align = "center">
+   <i>Selecting Dataflow configuration command and FIFO as buffer</i>
+   </p>
 4. Click OK again.
 
 5. Click on the Synthesis button.
@@ -366,7 +370,7 @@ default_channel. Enter **2** as the fifo_depth. Click OK.
 7. Note that the performance parameter has not changed; however, resource estimates show that
 the design is not using any BRAM and other resources (FF, LUT) usage has also reduced.
     <p align="center">
-    <img src ="./images/lab2/Figure18.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure18.png">
     </p>
     <p align = "center">
     <i>Resource estimation after Dataflow configuration command</i>
@@ -381,13 +385,13 @@ the design is not using any BRAM and other resources (FF, LUT) usage has also re
 An Export RTL Dialog box will open.
 
 2. Click on the drop-down button of the **Evaluate Generated RTL** field and select **VHDL** as the
-language and click on the Vivado synthesis, place and route check box underneath.
+  language and click on the Vivado synthesis, place and route check box underneath.
 
 3. Click OK and the implementation run will begin. You can observe the progress in the Vivado HLS
 Console window. When the run is completed the implementation report will be displayed in the
 information pane.
     <p align="center">
-    <img src ="./images/lab2/Figure19.png" width="60%" height="80%"/>
+    <img src ="./images/lab2/Figure19.png">
     </p>
     <p align = "center">
     <i>Implementation results in Vivado HLS</i>
