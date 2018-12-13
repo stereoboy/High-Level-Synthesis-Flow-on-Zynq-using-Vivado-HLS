@@ -45,12 +45,12 @@ headphone.
 #### Create a new project in Vivado HLS targeting xc7z020clg400-1(pynq)
 
 1. Launch Vivado HLS: **Select Start > All Programs > Xilinx Design Tools > Vivado 2018.2 >
-  Vivado HLS > Vivado HLS 2018.2**
+    Vivado HLS > Vivado HLS 2018.2**
 
   A **Getting Started GUI** will appear.
 
 2. In the Getting Started section, click on Create New Project. The New Vivado HLS Project wizard
-  opens.
+     opens.
 
 3. Click Browse… button of the Location field, browse to **c:\xup\hls\labs\lab4**, and then click OK.
 
@@ -59,40 +59,40 @@ headphone.
 5. Click Next.
 
 6. In the Add/Remove Files for the source files, type **fir** as the function name (the provided source
-  file contains the function, to be synthesized, called fir).
+     file contains the function, to be synthesized, called fir).
 
 7. Click the Add Files… button, select **fir.c** and **fir_coef.dat** files from the c:\xup\hls\labs\lab4 folder,
-  and then click Open.
+     and then click Open.
 
 8. Click Next.
 
 9. In the Add/Remove Files for the testbench, click the Add Files… button, select **fir_test.c** file from
-  the c:\xup\hls\labs\lab4 folder and click Open.
+     the c:\xup\hls\labs\lab4 folder and click Open.
 
 10. Click Next.
 
 11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
-    period as 10. Leave Uncertainty field blank.
+      period as 10. Leave Uncertainty field blank.
 
 12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
-    select xc7z020clg400-1.
+      select xc7z020clg400-1.
 
 13. Click Finish.
 
-    You will see the created project in the Explorer view. Expand various sub-folders to see the
-    entries under each sub-folder.
+      You will see the created project in the Explorer view. Expand various sub-folders to see the
+      entries under each sub-folder.
 
 14. Double-click on the fir.c under the source folder to open its content in the information pane.
-    <p align="center">
-    <img src ="./images/lab4/Figure1.png">
-    </p>
-    <p align = "center">
-    <i>The design under consideration</i>
-    </p>
-    The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them
-    are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file
-    called fir_coef.dat located in the current directory. The sequential algorithm is applied and
-    accumulated value (sample out) is computed in variable acc of type acc_t.
+      <p align="center">
+      <img src ="./images/lab4/Figure1.png">
+      </p>
+      <p align = "center">
+      <i>The design under consideration</i>
+      </p>
+      The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them
+      are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file
+      called fir_coef.dat located in the current directory. The sequential algorithm is applied and
+      accumulated value (sample out) is computed in variable acc of type acc_t.
 
 15. Double-click on the **fir.h** in the outline tab to open its content in the information pane.
     <p align="center">
@@ -120,7 +120,7 @@ headphone.
 #### Run C simulation to observe the expected output.
 
 1. Select **Project > Run C Simulation** or click on the button from the tools bar buttons, and Click OK in
-  the C Simulation Dialog window.
+    the C Simulation Dialog window.
 
   The testbench will be compiled using apcc compiler and csim.exe file will be generated. The
   csim.exe will then be executed and the output will be displayed in the console view.
@@ -189,7 +189,7 @@ remains same; however, LUT and FF consumptions have slightly increased.
 #### Run the RTL/C Co-simulation, selecting Verilog. Verify that the simulation passes.
 
 1. Select **Solution > Run C/RTL Co-simulation** or click on the button to open the dialog box
-  so the desired simulations can be run.
+    so the desired simulations can be run.
 
   A **C/RTL Co-simulation Dialog** box will open.
 
@@ -248,13 +248,13 @@ processor system using available GPIO IP.
 #### Re-synthesize the design as directives have been added. Run the RTL Export to generate the IP-XACT adapter.
 
 1. Since the directives have been added, it is safe to re-synthesize the design. Select **Solution >
-  Run C Synthesis > Active Solution**
+    Run C Synthesis > Active Solution**
 
   Check the Interface summary at the bottom of the Synthesis report to see the interface that has
   been created.
 
 2. Once the design is synthesized, select **Solution > Export RTL** to open the dialog box so the
-  desired IP can be generated.
+    desired IP can be generated.
 
   An **Export RTL Dialog** box will open.
   ​    <p align="center">
@@ -452,7 +452,7 @@ The program should compile successfully.
 2. Connect an audio patch cable between the Line In jack and the speaker (headphone) out jack of
 a PC.
 
-3. Connect a headphone to the Line Out jack on board. Power ON the board.
+3. Connect a headphone to the HP+MIC jack on board. Power ON the board.
 
 4. Select **Xilinx > Program FPGA**.
 
