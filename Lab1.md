@@ -57,7 +57,7 @@ After completing this lab, you will be able to:
 
 12. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock period as 10.
 
-      Click the **…** button in the Part Selection section.
+       Click the **…** button in the Part Selection section.
 
 13. In the Device Selection Dialog page, select Parts Specify field, and select the following filters to select the **xc7z020clg400-1** part and click **OK**.
      <p align="center">
@@ -292,7 +292,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Run the C/RTL Co-simulation with the default settings of VHDL. Verify that the simulation passes.
 
-1. Select **Solution > Run C/RTL Cosimulation** or click on the ![](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be selected and run.
+1. Select **Solution > Run C/RTL Cosimulation** or click on the ![Check_Box](images/lab1/Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be selected and run.
 
    A **C/RTL Co-simulation Dialog box** will open.
 
@@ -348,7 +348,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Run Verilog simulation with Dump Trace option selected.
 
-1. Select **Solution > Run C/RTL Co-simulation** or click on the ![](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be run.
+1. Select **Solution > Run C/RTL Co-simulation** or click on the ![Check_Box](images/lab1/Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be run.
 
 2. Click on the **Verilog RTL** Selection option, leaving Verilog/VHDL Simulator Section option to Auto.
 
@@ -383,12 +383,12 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Analyze the dumped traces.
 
-1. Click on the ![](.\images\lab1\wave_viewer.png) button on tools bar to open the wave viewer. This will start Vivado 2018.2 and open the wave viewer.
+1. Click on the ![wave_viewer](images/lab1/wave_viewer.png) button on tools bar to open the wave viewer. This will start Vivado 2018.2 and open the wave viewer.
 
 2. Click on the zoom fit tool button ( ) to see the entire simulation of one iteration.
 
 3. Select a_address0 in the waveform window, right-click and select **Radix > Unsigned Decimal**.
-  Similarly, do the same for b_address0 and res_address0 signals.
+     Similarly, do the same for b_address0 and res_address0 signals.
 
 4. Similarly, set the a_q0, b_q0, and res_d0 radix to Signed Decimal.
 
@@ -423,7 +423,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### In Vivado HLS, export the design, selecting VHDL as a language, and run the implementation by selecting Evaluate option.
 
-1. In Vivado-HLS, select **Solution > Export RTL** or click on the ![Export](.\images\lab1\Export.png) button on tools bar to open the dialog box so the desired implementation can be run.
+1. In Vivado-HLS, select **Solution > Export RTL** or click on the ![Export](images/lab1/Export.png) button on tools bar to open the dialog box so the desired implementation can be run.
 
   An Export RTL Dialog box will open.
   ​    <p align="center">
