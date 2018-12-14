@@ -141,14 +141,14 @@ synthesis report when the process is completed.
    <i>Vivado HLS automatically inlining function</i>
    </p>
 6. Observe that there are three entries – rgb2yuv.rpt, yuv_filter.rpt, and yuv2rgb.rpt under the syn
-    report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was
-    inlined into the yuv_filter function.
+     report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was
+       inlined into the yuv_filter function.
 
-  You can access lower level module’s report by either traversing down in the top-level report under
-  components (under Utilization Estimates > Details > Component) or from the reports container in
-  the project explorer.
+       You can access lower level module’s report by either traversing down in the top-level report under
+       components (under Utilization Estimates > Details > Component) or from the reports container in
+       the project explorer.
 
-7. Expand the Summary of loop latency and note the latency and trip count numbers for the
+7. Expand the **Summary** of loop latency and note the latency and trip count numbers for the
      yuv_scale function. Note that the YUV_SCALE_LOOP_Y loop latency is 6X the specified
        TRIPCOUNT, implying that 6 cycles are used for each of the iteration of the loop.
 
@@ -204,7 +204,7 @@ synthesis report when the process is completed.
 
 * RGB2YUV_LOOP_Y total loop latency = 7 x 1280 = 8960 cycles
 * 1 entry and 1 exit clock for loop RGB2YUV_LOOP_Y = 8962 cycles
-* RGB2YUV_LOOP_X loop body latency = 10242 cycles
+* RGB2YUV_LOOP_X loop body latency = 8962 cycles
 * RGB2YUV_LOOP_X total loop latency = 8962 x 1920 =17207040 cycles
 * 1 exit clock for the loop = 17207041 cycle
 
@@ -246,15 +246,16 @@ inlining. Make sure that the Directive File is selected as destination. Click **
 * Neither the top-level function nor any of the sub-functions are pipelined in this example.
 * The pipeline directive must be applied to the inner-most loop in each function – the innermost loops have no variable-bounded loops inside of them which are required to be unrolled and the outer loop will simply keep the inner loop fed with data
 
-7. Expand the yuv_scale in the Directives tab, right-click on YUV_SCALE_LOOP_Y object and select insert directives …, and select **PIPELINE** as the directive.
+7. Expand the **yuv_scale** in the Directives tab, right-click on **YUV_SCALE_LOOP_Y** object and select insert directives …, and select **PIPELINE** as the directive.
 
 8. Leave II (Initiation Interval) blank as Vivado HLS will try for an II=1, one new input every clock
      cycle.
 
 9. Click OK.
 
-10. Similarly, apply the PIPELINE directive to YUV2RGB_LOOP_Y and RGB2YUV_LOOP_Y objects.
+10. Similarly, apply the **PIPELINE** directive to **YUV2RGB_LOOP_Y** and **RGB2YUV_LOOP_Y** objects.
       At this point, the Directive tab should look like as follows.
+
       <p align="center">
       <img src ="./images/lab2/Figure12.png">
       </p>
@@ -275,19 +276,19 @@ inlining. Make sure that the Directive File is selected as destination. Click **
         <p align = "center">
         <i>Performance comparison after pipelining</i>
         </p>
-
         In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration
         count, whereas in Solution2 the new total loop latency of the inner-most loop is
         loop_body_latency + loop iteration count.
 
 15. Scroll down in the comparison report to view the resources utilization. Observe that the FFs,
-LUTs, and DSP48E utilization increased whereas BRAM remained same.
-    <p align="center">
-    <img src ="./images/lab2/Figure14.png">
-    </p>
-    <p align = "center">
-    <i>Resources utilization after pipelining</i>
-    </p>
+      LUTs, and DSP48E utilization increased whereas BRAM remained same.
+
+      <p align="center">
+      <img src ="./images/lab2/Figure14.png">
+      </p>
+      <p align = "center">
+      <i>Resources utilization after pipelining</i>
+      </p>
 
 ### Apply DATAFLOW Directive and Configuration Command
 

@@ -48,33 +48,33 @@ After completing this lab, you will be able to:
 
 2. In the Vivado HLS GUI, select **File > New Project**. The New Vivado HLS Project wizard opens.
 
-3. Click Browse… button of the Location field and browse to **c:\xup\hls\labs\lab3** and then click
-     OK.
+3. Click **Browse…** button of the Location field and browse to **c:\xup\hls\labs\lab3** and then click
+     **OK**.
 
 4. For Project Name, type **dct.prj**.
 
-5. Click Next.
+5. Click **Next**.
 
-6. In the Add/Remove Files for the source files, type dct as the function name (the provided source
+6. In the Add/Remove Files for the source files, type **dct** as the function name (the provided source
      file contains the function, to be synthesized, called dct).
 
-7. Click the Add Files… button, select dct.c file from the **c:\xup\hls\labs\lab3** folder, and then click
-     Open.
+7. Click the **Add Files…** button, select **dct.c** file from the **c:\xup\hls\labs\lab3** folder, and then click
+     **Open**.
 
-8. Click Next.
+8. Click **Next**.
 
-9. In the Add/Remove Files for the testbench, click the **Add Files…** button, select **dct_test.c**, in.dat,
-     out.golden.dat files from the c:\xup\hls\labs\lab3 folder and click Open.
+9. In the Add/Remove Files for the testbench, click the **Add Files…** button, select **dct_test.c**, **in.dat**,
+     **out.golden.dat** files from the **c:\xup\hls\labs\lab3** folder and click **Open**.
 
-10. Click Next.
+10. Click **Next**.
 
 11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
-      ​    period as 10. Leave Uncertainty field blank.
+      period as 10. Leave Uncertainty field blank.
 
 12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
-      ​    select xc7z020clg400-1.
+      select **xc7z020clg400-1**.
 
-13. Click Finish.
+13. Click **Finish**.
 
 14. Double-click on the **dct.c** under the source folder to open its content in the information pane.
       <p align="center">
@@ -114,10 +114,10 @@ synthesis process.
 2. When synthesis is completed, several report files will become accessible and the Synthesis
      Results will be displayed in the information pane.
 
-       Note that the Synthesis Report section in the Explorer view only shows dct_1d.rpt, dct_2d.rpt,
-       and dct.rpt entries. The read_data and write_data functions reports are not listed. This is
-       because these two functions are inlined. Verify this by scrolling up into the Vivado HLS Console
-       view.
+     Note that the Synthesis Report section in the Explorer view only shows dct_1d.rpt, dct_2d.rpt,
+     and dct.rpt entries. The read_data and write_data functions reports are not listed. This is
+     because these two functions are inlined. Verify this by scrolling up into the Vivado HLS Console
+     view.
 
  <p align="center">
  <img src ="./images/lab3/Figure4.png">
@@ -172,10 +172,9 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 
 #### Run the Co-simulation, selecting Verilog. Verify that the simulation passes.
 
-1. Select **Solution > Run C/RTL Co-simulation** or click on the check mark button on tools bar to open the dialog box so
-    the desired simulations can be run.
+1. Select **Solution > Run C/RTL Co-simulation** or click on the check mark button on tools bar to open the dialog box so the desired simulations can be run.
 
-  A C/RTL Co-simulation Dialog box will open.
+      A C/RTL Co-simulation Dialog box will open.
 
 2. Select the Verilog option, and click OK to run the Verilog simulation using XSIM simulator.
 
@@ -250,8 +249,8 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 
 1. Click on the Analysis perspective button.
 
-2. In the Module Hierarchy, select the dct entry and observe the RD_Loop_Row_RD_Loop_Col and
-    WR_Loop_Row_WR_Loop_Col entries. These are two nested loops flattened and given the new
+2. In the Module Hierarchy, select the dct entry and observe the **RD_Loop_Row_RD_Loop_Col** and
+    **WR_Loop_Row_WR_Loop_Col** entries. These are two nested loops flattened and given the new
     names formed by appending inner loop name to the ouer loop name. You can also verify this by
     looking in the Console view message.
    <p align="center">
@@ -297,7 +296,7 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 
 2. A Solution Configuration dialog box will appear. Click the **Finish** button (with Solution2 selected).
 
-3. Select PIPELINE directive of **DCT_Inner_Loop** of the dct_1d function in the Directive pane,
+3. Select **PIPELINE** directive of **DCT_Inner_Loop** of the dct_1d function in the Directive pane,
      right-click on it and select **Remove** Directive.
 
 4. Select **DCT_Outer_Loop** of the dct_1d function in the Directive pane, right-click on it and select
@@ -327,12 +326,12 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
      click OK.
 
 10. Observe that the latency reduced from 1851 to 875 clock cycles.
-      <p align="center">
-      <img src ="./images/lab3/Figure16.png">
-      </p>
-      <p align = "center">
-      <i>Performance comparison after pipelining</i>
-      </p>
+       <p align="center">
+       <img src ="./images/lab3/Figure16.png">
+       </p>
+       <p align = "center">
+       <i>Performance comparison after pipelining</i>
+       </p>
 
 11. Scroll down in the comparison report to view the resources utilization. Observe that the utilization
      of all resources (except BRAM) increased. Since the DCT_Inner_Loop was unrolled, the parallel
@@ -405,8 +404,8 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 
 2. A Solution Configuration dialog box will appear. Click the Finish button (with Solution3 selected).
 
-3. With dct.c open, select buf_2d_in array of the dct function in the Directive pane, right-click on it
-     and select Insert Directive...
+3. With dct.c open, select **buf_2d_in** array of the dct function in the Directive pane, right-click on it
+     and select **Insert Directive...**
 
        The buf_2d_in array is selected since the bottleneck was on src port of the dct_1d function, which
        was passed via in_block of the dct_2d function, which in turn was passed via buf_2d_in of the dct
@@ -421,7 +420,7 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
     <p align = "center">
     <i>Applying ARRAY_PARTITION directive to memory buffer</i>
     </p>
-6. Similarly, apply the ARRAY_PARTITION directive with dimension of 2 to the **col_inbuf** array.
+6. Similarly, apply the **ARRAY_PARTITION** directive with dimension of 2 to the **col_inbuf** array.
 
 7. Click on the **Synthesis** button.
 
@@ -431,12 +430,12 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 9. Select Solution3 and Solution4 from the Available Reports, and click on the **Add>>** button.
 
 10. Observe that the latency reduced from 875 to 509 clock cycles.
-      <p align="center">
-      <img src ="./images/lab3/Figure24.png">
-      </p>
-      <p align = "center">
-      <i>Performance comparison after array partitioning</i>
-      </p>
+       <p align="center">
+       <img src ="./images/lab3/Figure24.png">
+       </p>
+       <p align = "center">
+       <i>Performance comparison after array partitioning</i>
+       </p>
 
 11. Scroll down in the comparison report to view the resources utilization. Observe the increase in
        the FF resource utilization (almost double).
@@ -659,7 +658,7 @@ Analysis perspective and console logs can provide insight on what is going on.
 
 1. Answer the following questions for dct:
 
-   Estimated clock period: 6.51 ns
+   Estimated clock period: 6.508 ns
 
    Worst case latency: 3959 clock cycles
 
