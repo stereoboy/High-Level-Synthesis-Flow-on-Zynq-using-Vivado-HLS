@@ -44,9 +44,9 @@ After completing this lab, you will be able to:
 
 6. Open the **vivado_hls.log** file from c:\xup\hls\labs\lab2 using any text editor and observe the following sections:
 
-* Creating directory and project called yuv_filter.prj within it, adding design files to the project, setting solution name as solution1, setting target device, setting desired clock period, and importing the design and testbench files (Figure 2).
-* Synthesizing (Generating) the design which involves scheduling and binding of each functions and sub-function (Figure 3).
-* Generating RTL of each function and sub-function in SystemC, Verilog, and VHDL languages (Figure 4).
+* Creating directory and project called yuv_filter.prj within it, adding design files to the project, setting solution name as solution1, setting target device, setting desired clock period, and importing the design and testbench files .
+* Synthesizing (Generating) the design which involves scheduling and binding of each functions and sub-function.
+* Generating RTL of each function and sub-function in SystemC, Verilog, and VHDL languages.
     <p align="center">
     <img src ="./images/lab2/Figure2.png">
     </p>
@@ -132,7 +132,7 @@ synthesis report when the process is completed.
      Number of LUTs used:
 
 5. Scroll the Console window and note that yuv_scale function is automatically inline into the
-  yuv_filter function.
+    yuv_filter function.
 
    <p align="center">
    <img src ="./images/lab2/Figure7.png">
@@ -141,8 +141,8 @@ synthesis report when the process is completed.
    <i>Vivado HLS automatically inlining function</i>
    </p>
 6. Observe that there are three entries – rgb2yuv.rpt, yuv_filter.rpt, and yuv2rgb.rpt under the syn
-  report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was
-  inlined into the yuv_filter function.
+    report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was
+    inlined into the yuv_filter function.
 
   You can access lower level module’s report by either traversing down in the top-level report under
   components (under Utilization Estimates > Details > Component) or from the reports container in
@@ -254,13 +254,13 @@ inlining. Make sure that the Directive File is selected as destination. Click **
 9. Click OK.
 
 10. Similarly, apply the PIPELINE directive to YUV2RGB_LOOP_Y and RGB2YUV_LOOP_Y objects.
-     At this point, the Directive tab should look like as follows.
-     <p align="center">
-     <img src ="./images/lab2/Figure12.png">
-     </p>
-     <p align = "center">
-     <i>PIPELINE directive applied</i>
-     </p>
+      At this point, the Directive tab should look like as follows.
+      <p align="center">
+      <img src ="./images/lab2/Figure12.png">
+      </p>
+      <p align = "center">
+      <i>PIPELINE directive applied</i>
+      </p>
 
 11. Click on the **Synthesis** button.
 
@@ -269,16 +269,16 @@ inlining. Make sure that the Directive File is selected as destination. Click **
 13. Select Solution1 and Solution2 from the **Available Reports**, and click on the **Add>> button**.
 
 14. Observe that the latency reduced.
-      <p align="center">
-      <img src ="./images/lab2/Figure13.png">
-      </p>
-      <p align = "center">
-      <i>Performance comparison after pipelining</i>
-      </p>
+        <p align="center">
+        <img src ="./images/lab2/Figure13.png">
+        </p>
+        <p align = "center">
+        <i>Performance comparison after pipelining</i>
+        </p>
 
-      In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration
-      count, whereas in Solution2 the new total loop latency of the inner-most loop is
-      loop_body_latency + loop iteration count.
+        In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration
+        count, whereas in Solution2 the new total loop latency of the inner-most loop is
+        loop_body_latency + loop iteration count.
 
 15. Scroll down in the comparison report to view the resources utilization. Observe that the FFs,
 LUTs, and DSP48E utilization increased whereas BRAM remained same.
