@@ -57,7 +57,7 @@ After completing this lab, you will be able to:
 
 12. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock period as 10.
 
-       Click the **…** button in the Part Selection section.
+        Click the **…** button in the Part Selection section.
 
 13. In the Device Selection Dialog page, select Parts Specify field, and select the following filters to select the **xc7z020clg400-1** part and click **OK**.
      <p align="center">
@@ -469,7 +469,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
     Observe that the timing constraint was met, the achieved period, and the type and amount of resources used.
     <p align="center">
-    <img src ="./images/lab1/Figure32.png" width="30%" height="40%"/>
+    <img src ="./images/lab1/Figure32.png">
     </p>
     <p align = "center">
     <i>Explorer view after the RTL Export run </i>
@@ -482,14 +482,12 @@ It includes project.xpr file (the Vivado project file), matrixmul.xdc file (timi
 project.runs folder (which includes synth_1 and impl_1 sub-folders created by the synthesis and
 implementation runs) among others.
 
-```html
 <p align="center">
 <img src ="./images/lab1/Figure33.png">
 </p>
 <p align = "center">
-<i>The implementation directory </i>
+<i>The implementation directory</i>
 </p>
-```
 
 7. Expand the ip folder and observe the IP packaged as a zip file (xilinx_com_hls_matrixmul_1_0.zip), ready for adding to the Vivado IP catalog.
     <p align="center">
