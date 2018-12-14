@@ -57,7 +57,7 @@ After completing this lab, you will be able to:
 
 12. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock period as 10.
 
-     Click the **…** button in the Part Selection section.
+      Click the **…** button in the Part Selection section.
 
 13. In the Device Selection Dialog page, select Parts Specify field, and select the following filters to select the **xc7z020clg400-1** part and click **OK**.
      <p align="center">
@@ -69,12 +69,12 @@ After completing this lab, you will be able to:
 14. Click **Finish**.
 
 You will see the created project in the Explorer view. Expand various sub-folders to see the entries under each sub-folder.
-    <p align="center">
-    <img src ="./images/lab1/Figure4.png">
-    </p>
-    <p align = "center">
-    <i>Explorer Window</i>
-    </p>
+​    <p align="center">
+​    <img src ="./images/lab1/Figure4.png">
+​    </p>
+​    <p align = "center">
+​    <i>Explorer Window</i>
+​    </p>
 
 15. Double-click on the **matrixmul.cpp** under the source folder to open its content in the information pane.
     <p align="center">
@@ -125,15 +125,17 @@ You will see the created project in the Explorer view. Expand various sub-folder
     </p>
 
 3. Scroll-down in the source view, and double-click in the blue margin at line 105 where it is about to
-  output **“{“** in the output console window. This will set a break-point at line 105. .
+    output **“{“** in the output console window. This will set a break-point at line 105. .
 
   The breakpoint is marked with a blue circle, and a tick
 
-    <p align="center">
-    <img src ="./images/lab1/Figure8.png">
-    </p>
-    <p align = "center">
-    </p>
+```HTML
+<p align="center">
+<img src ="./images/lab1/Figure8.png">
+</p>
+<p align = "center">
+</p>
+```
 4. Similarly, set a breakpoint at line 101 on the matrixmul() function
 
 5. Using the **Step Over** (F6) button several times, observe the execution progress, and observe the variable values updating, as well as computed software result.
@@ -196,7 +198,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 
     Note that when the **syn** folder under the Solution1 folder is expanded in the Explorer view, it will show report, systemC, verilog, and vhdl sub-folders under which report files, and generated source (vhdl, verilog, header, and cpp) files. By double-clicking any of these entries will open the corresponding file in the information pane.
-
+    
     Also note that if the target design has hierarchical functions, reports corresponding to lower-level functions are also created.
 
 5. The Synthesis Report shows the performance and resource estimates as well as estimated latency in the design.
@@ -236,12 +238,12 @@ You will see the created project in the Explorer view. Expand various sub-folder
    The **Module Hierarchy** pane shows both the performance and area information for the entire design and can be used to navigate through the hierarchy. The **Performance Profile** pane is visible and shows the performance details for this level of hierarchy. The information in these two panes is similar to the information reviewed earlier in the synthesis report.
 
    The **Schedule Viewer** is also shown in the right-hand side pane. This view shows how the operations in this particular block are scheduled into clock cycles.
-       <p align="center">
-       <img src ="./images/lab1/Figure15.png">
-       </p>
-       <p align = "center">
-       <i>Analysis perspective</i>
-       </p>
+   ​    <p align="center">
+   ​    <img src ="./images/lab1/Figure15.png">
+   ​    </p>
+   ​    <p align = "center">
+   ​    <i>Analysis perspective</i>
+   ​    </p>
    ​    
 
 2. Click on ‘>’ of loop Row to expand, and then similarly click on sub-loops **Col** and **Product** to fully expand the loop hierarchy.
@@ -290,7 +292,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Run the C/RTL Co-simulation with the default settings of VHDL. Verify that the simulation passes.
 
-1. Select **Solution > Run C/RTL Cosimulation** or click on the ![Check_Box](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be selected and run.
+1. Select **Solution > Run C/RTL Cosimulation** or click on the ![](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be selected and run.
 
    A **C/RTL Co-simulation Dialog box** will open.
 
@@ -329,8 +331,8 @@ You will see the created project in the Explorer view. Expand various sub-folder
 </p>
 
 4. Once the simulation verification is completed, the simulation report tab will open showing the
-  results. The report indicates if the simulation passed or failed. In addition, the report indicates the
-  measured latency and interval.
+    results. The report indicates if the simulation passed or failed. In addition, the report indicates the
+    measured latency and interval.
 
   Since we have selected only VHDL, the result shows the latencies and interval (initiation) which
   indicates after how many clock cycles later the next input can be provided. Since the design is
@@ -346,7 +348,7 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Run Verilog simulation with Dump Trace option selected.
 
-1. Select **Solution > Run C/RTL Co-simulation** or click on the ![Check_Box](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be run.
+1. Select **Solution > Run C/RTL Co-simulation** or click on the ![](.\images\lab1\Check_Box.PNG) button in the Synthesis view to open the dialog box so the desired simulations can be run.
 
 2. Click on the **Verilog RTL** Selection option, leaving Verilog/VHDL Simulator Section option to Auto.
 
@@ -381,12 +383,12 @@ You will see the created project in the Explorer view. Expand various sub-folder
 
 #### Analyze the dumped traces.
 
-1. Click on the ![wave_viewer](.\images\lab1\wave_viewer.png) button on tools bar to open the wave viewer. This will start Vivado 2018.2 and open the wave viewer.
+1. Click on the ![](.\images\lab1\wave_viewer.png) button on tools bar to open the wave viewer. This will start Vivado 2018.2 and open the wave viewer.
 
 2. Click on the zoom fit tool button ( ) to see the entire simulation of one iteration.
 
 3. Select a_address0 in the waveform window, right-click and select **Radix > Unsigned Decimal**.
-Similarly, do the same for b_address0 and res_address0 signals.
+  Similarly, do the same for b_address0 and res_address0 signals.
 
 4. Similarly, set the a_q0, b_q0, and res_d0 radix to Signed Decimal.
 
@@ -415,7 +417,7 @@ Similarly, do the same for b_address0 and res_address0 signals.
 6. View various part of the simulation and try to understand how the design works.
 
 7. When done, close Vivado by selecting **File > Exit**. Click **OK** if prompted, and then **Discard** to
-  close the program without saving.
+    close the program without saving.
 
 ### Export RTL and Implement
 
