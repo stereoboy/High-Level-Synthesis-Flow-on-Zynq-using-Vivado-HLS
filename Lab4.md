@@ -5,6 +5,8 @@
 This lab introduces a design flow to generate a IP-XACT adapter from a design using Vivado HLS and
 using the generated IP-XACT adapter in a processor system using IP Integrator in Vivado.
 
+**Note.** This lab does not work for PYNQ-Z1.
+
 ## Objectives
 
 After completing this lab, you will be able to:
@@ -72,27 +74,27 @@ headphone.
 10. Click Next.
 
 11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
-      period as 10. Leave Uncertainty field blank.
+      ​    period as 10. Leave Uncertainty field blank.
 
 12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
-      select xc7z020clg400-1.
+      ​    select xc7z020clg400-1.
 
 13. Click Finish.
 
-      You will see the created project in the Explorer view. Expand various sub-folders to see the
-      entries under each sub-folder.
+          You will see the created project in the Explorer view. Expand various sub-folders to see the
+          entries under each sub-folder.
 
 14. Double-click on the fir.c under the source folder to open its content in the information pane.
-      <p align="center">
-      <img src ="./images/lab4/Figure1.png">
-      </p>
-      <p align = "center">
-      <i>The design under consideration</i>
-      </p>
-      The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them
-      are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file
-      called fir_coef.dat located in the current directory. The sequential algorithm is applied and
-      accumulated value (sample out) is computed in variable acc of type acc_t.
+      ​    <p align="center">
+      ​    <img src ="./images/lab4/Figure1.png">
+      ​    </p>
+      ​    <p align = "center">
+      ​    <i>The design under consideration</i>
+      ​    </p>
+      ​    The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them
+      ​    are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file
+      ​    called fir_coef.dat located in the current directory. The sequential algorithm is applied and
+      ​    accumulated value (sample out) is computed in variable acc of type acc_t.
 
 15. Double-click on the **fir.h** in the outline tab to open its content in the information pane.
     <p align="center">
@@ -532,7 +534,7 @@ Number of LUTs used: 154
    </p>
 7. Click Next two times to skip Adding Existing IP and Add Constraints dialog boxes
 
-8. In the Default Part form, select Boards, and select Pynq Z1 or Pynq Z2. Click Next.
+8. In the Default Part form, select Boards, and select pynq-z2. Click Next.
     <p align="center">
     <img src ="./images/lab4/FigureA3.png">
     </p>
