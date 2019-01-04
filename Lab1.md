@@ -197,8 +197,8 @@ After completing this lab, you will be able to:
 
 6. Using scroll bar on the right, scroll down into the report and answer the following question.
 
-**Question1:**
-
+**Question**
+1. Answer the following question:
    Estimated clock period:  
    Worst case latency:  
    Number of DSP48E used:  
@@ -487,7 +487,7 @@ created a project, adding source files, synthesized the design, simulated the de
 design. You also learned how to use the Analysis capability to understand the scheduling and binding.
 
 ### Answers
-1. Answer the following questions:
+1. Answer the following question:
 
    Estimated clock period: **8.70 ns**   
    Worst case latency: **79 clock cycles**   
