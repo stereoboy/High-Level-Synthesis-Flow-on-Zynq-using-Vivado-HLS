@@ -1,11 +1,5 @@
 # Improving Performance Lab
 
-## Introduction
-
-This lab introduces various techniques and directives which can be used in Vivado HLS to improve
-design performance. The design under consideration accepts an image in a (custom) RGB format,
-converts it to the Y’UV color space, applies a filter to the Y’UV image and converts it back to RGB.
-
 ## Objectives
 
 After completing this lab, you will be able to:
@@ -19,13 +13,15 @@ After completing this lab, you will be able to:
 
 ### Create a Vivado HLS Project from Command Line
 
-#### Validate your design using Vivado HLS command line window. Create a new Vivado HLS project from the command line.
+#### Validate your design using Vivado HLS command line mode. Create a new Vivado HLS project from the command line.
 
-1. Launch Vivado HLS: **Select Start > All Programs > Xilinx Design Tools > Vivado 2018.2 > Vivado HLS > Vivado HLS 2018.2 Command Prompt**.
+1. Select **Start > Xilinx Design Tools > Vivado HLS 2018.2 Command Prompt**.
 
-2. In the Vivado HLS Command Prompt, change directory to c:\xup\hls\labs\lab2.
+2. In the Vivado HLS Command Prompt window, change directory to **c:\xup\hls\labs\lab2**.
 
-3. A self-checking program (yuv_filter_test.c) is provided. Using that we can validate the design. A Makefile is also provided. Using the Makefile, the necessary source files can be compiled and the compiled program can be executed. You can examine the contents of these files and the project directory. In the Vivado HLS Command Prompt, type make to compile and execute the program. (You might need to set up the system environment variable for make command)
+   A self-checking program (yuv_filter_test.c) is provided. Using that we can validate the design. A Makefile is also provided. Using the Makefile, the necessary source files can be compiled and the compiled program can be executed. You can examine the contents of these files and the project directory. 
+   
+3. In the Vivado HLS Command Prompt window, type **make** to compile and execute the program. (You might need to set up the system environment variable for make command)
     <p align="center">
     <img src ="./images/lab2/Figure1.png">
     </p>
@@ -36,15 +32,15 @@ After completing this lab, you will be able to:
     yuv_filter executable program was created, and then it was executed. The program tests the
     design and outputs Test Passed message.
 
-4. A Vivado HLS tcl script file (pynq_yuv_filter.tcl) is provided and can be used to create a Vivado HLS project.
+   A Vivado HLS tcl script file (pynq_yuv_filter.tcl) is provided and can be used to create a Vivado HLS project.
 
-5. Type **vivado_hls –f pynq_yuv_filter.tcl** in the Vivado HLS Command Prompt window to create the project targeting the Pynq.
+4. Type **vivado_hls –f pynq_yuv_filter.tcl** in the Vivado HLS Command Prompt window to create the project targeting xc7z020clg400-1 part.
 
     The project will be created and Vivado HLS.log file will be generated.
 
-6. Open the **vivado_hls.log** file from c:\xup\hls\labs\lab2 using any text editor and observe the following sections:
+5. Open the **vivado_hls.log** file from *c:\xup\hls\labs\lab2* using any text editor and observe the following sections:
 
-* Creating directory and project called yuv_filter.prj within it, adding design files to the project, setting solution name as solution1, setting target device, setting desired clock period, and importing the design and testbench files .
+* Creating directory and project called yuv_filter.prj within it, adding design files to the project, setting solution name as solution1, setting target device, setting desired clock period, and importing the design and testbench files.
 * Synthesizing (Generating) the design which involves scheduling and binding of each functions and sub-function.
 * Generating RTL of each function and sub-function in SystemC, Verilog, and VHDL languages.
     <p align="center">
@@ -65,7 +61,7 @@ After completing this lab, you will be able to:
     <p align = "center">
     <i>Generating RTL</i>
     </p>
-7. Open the created project (in GUI mode) from the Vivado HLS Command Prompt window, by typing **vivado_hls –p yuv_filter.prj**.
+6. Open the created project (in GUI mode) from the Vivado HLS Command Prompt window, by typing **vivado_hls –p yuv_filter.prj**.
 
    The Vivado HLS will open in GUI mode and the project will be opened.
 
@@ -73,7 +69,7 @@ After completing this lab, you will be able to:
 
 #### Open the source file and note that three functions are used. Look at the results and observe that the latencies are undefined (represented by ?).
 
-1. In Vivado HLS GUI, expand the source folder in the Explorer view and double click **yuv_filter.c**
+1. In Vivado HLS GUI, expand the source folder in the *Explorer* view and double click **yuv_filter.c**
     to view the content.
 
 * The design is implemented in 3 functions: **rgb2yuv**, **yuv_scale** and **yuv2rgb**.
@@ -83,7 +79,7 @@ After completing this lab, you will be able to:
 * Also notice that the original source used malloc() to dynamically allocate storage for the internal image buffers. While appropriate for such large data structures in software, malloc() is not synthesizable and is not supported by Vivado HLS.
 * A viable workaround is conditionally compiled into the code, leveraging the __SYNTHESIS__ macro. Vivado HLS automatically defines the __SYNTHESIS__ macro when reading any code. This ensure the original malloc() code is used outside of synthesis but Vivado HLS will use the workaround when synthesizing.
 
-2. Expand the **syn > report** folder in the Explorer view and double-click yuv_filter_csynh.rpt entry to open the synthesis report.
+2. Expand the **syn > report** folder in the *Explorer* view and double-click yuv_filter_csynh.rpt entry to open the synthesis report.
 
 3. Each of the loops in this design has variable bounds – the width and height are defined by
     members of input type image_t. When variables bounds are present on loops the total latency of
@@ -101,9 +97,7 @@ After completing this lab, you will be able to:
 
 #### Open the source file and uncomment pragma lines, re-synthesize, and observe the resources used as well as estimated latencies. Answer the questions listed in the detailed section of this step.
 
-1. To assist in providing loop-latency estimates, Vivado HLS provides a TRIPCOUNT directive
-     which allows limits on the variables bounds to be specified by the user. In this design, such
-       directives have been embedded in the source code, in the form of #pragma statements.
+1. To assist in providing loop-latency estimates, Vivado HLS provides a TRIPCOUNT directive which allows limits on the variables bounds to be specified by the user. In this design, such directives have been embedded in the source code, in the form of #pragma statements.
 
 2. Uncomment the #pragma lines (50, 53, 90, 93, 130, 133) to define the loop bounds and save the
      file.
@@ -120,19 +114,14 @@ After completing this lab, you will be able to:
 
      #### Question 1
 
-     Estimated clock period:
+     Estimated clock period:  
+     Worst case latency:  
+     Number of DSP48E used:  
+     Number of BRAMs used:  
+     Number of FFs used:  
+     Number of LUTs used:  
 
-     Worst case latency:
-
-     Number of DSP48E used:
-
-     Number of BRAMs used:
-
-     Number of FFs used:
-
-     Number of LUTs used:
-
-5. Scroll the Console window and note that yuv_scale function is automatically inline into the
+5. Scroll the *Console* window and note that yuv_scale function is automatically inline into the
     yuv_filter function.
 
    <p align="center">
@@ -150,7 +139,7 @@ After completing this lab, you will be able to:
      the project explorer.
 
 7. Expand the **Summary** of loop latency and note the latency and trip count numbers for the
-     yuv_scale function. Note that the YUV_SCALE_LOOP_Y loop latency is 6X the specified
+     yuv_scale function. Note that the YUV_SCALE_LOOP_Y loop latency is 6x the specified
        TRIPCOUNT, implying that 6 cycles are used for each of the iteration of the loop.
 
    <p align="center">
@@ -159,8 +148,7 @@ After completing this lab, you will be able to:
    <p align = "center">
    <i>Loop latency</i>
    </p>
-8. You can verify this by opening an analysis perspective view, expanding the
-    **YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
+8. You can verify this by opening an analysis perspective view, expanding the **YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
 
    <p align="center">
    <img src ="./images/lab2/Figure9.png">
@@ -168,40 +156,32 @@ After completing this lab, you will be able to:
    <p align = "center">
    <i>Design analysis view of the YUV_SCALE_LOOP_Y loop</i>
    </p>
-9. In the report tab, expand **Detail > Instance** section of the Utilization Estimates and click on the
+9. In the report tab, expand **Detail > Instance** section of the *Utilization Estimates* and click on the
 **grp_rgb2yuv_fu_244 (rgb2yuv)** entry to open the report.
 
-10. Answer the following question pertaining to rgb2yuv function.
+10. Answer the following question pertaining to *rgb2yuv* function.
 
     #### Question 2
 
-    Estimated clock period:
+    Estimated clock period:  
+    Worst case latency:  
+    Number of DSP48E used:  
+    Number of FFs used:  
+    Number of LUTs used:  
 
-    Worst case latency:
-
-    Number of DSP48E used:
-
-    Number of FFs used:
-
-    Number of LUTs used:
-
-11. Similarly, open the yuv2rgb report.
+11. Similarly, open the *yuv2rgb* report.
 
 12. Answer the following question pertaining to yuv2rgb function.
 
     #### Question 3
 
-    Estimated clock period:
-
-    Worst case latency:
-
-    Number of DSP48E used:
-
-    Number of FFs used:
-
+    Estimated clock period:  
+    Worst case latency:  
+    Number of DSP48E used:  
+    Number of FFs used:  
     Number of LUTs used:
 
-13. For the rgb2yuv function, in case of Pynq, the worst case latency is reported as 17207041 clock cycles. The reported latency can be estimated as follows.
+13. For the *rgb2yuv* function the worst case latency is reported as **17207041** clock cycles. The reported latency can be estimated as follows.
 
 * RGB2YUV_LOOP_Y total loop latency = 7 x 1280 = 8960 cycles
 * 1 entry and 1 exit clock for loop RGB2YUV_LOOP_Y = 8962 cycles
@@ -215,7 +195,7 @@ After completing this lab, you will be able to:
 
 1. Select **Project > New Solution** or click on the button from the tools bar buttons.
 
-2. A Solution Configuration dialog box will appear. Note that the check boxes of Copy directives and constraints from solution are checked with solution1 selected. Click the **Finish** button to create a new solution with the default settings.
+2. A *Solution Configuration* dialog box will appear. Note that the check boxes of *Copy directives and constraints from solution* are checked with *solution1* selected. Click the **Finish** button to create a new solution with the default settings.
    <p align="center">
    <img src ="./images/lab2/Figure10.png">
    </p>
@@ -225,13 +205,13 @@ After completing this lab, you will be able to:
 3. Make sure that the **yuv_filter.c** source is opened and visible in the information pane, and click on
      the **Directive** tab.
 
-4. Select function **yuv_scale** in the directives pane, right-click on it and select **Insert Directive...**
+4. Select function **yuv_scale** in the directives pane, right-click on it, and select **Insert Directive...**
 
-5. Click on the drop-down button of the Directive field. A pop-up menu shows up listing various
+5. Click on the drop-down button of the *Directive* field. A pop-up menu shows up listing various
      directives. Select **INLINE** directive.
 
-6. In the Vivado HLS Directive Editor dialog box, click on the **off** option to turn off the automatic
-    inlining. Make sure that the Directive File is selected as destination. Click **OK**.
+6. In the *Vivado HLS Directive Editor* dialog box, click on the **off** option to turn off the automatic
+    inlining. Make sure that the *Directive File* is selected as destination. Click **OK**.
 
    <p align="center">
    <img src ="./images/lab2/Figure11.png">
@@ -244,17 +224,16 @@ After completing this lab, you will be able to:
 * In order for a loop to be unrolled it must have fixed bounds: all the loops in this design have variable bounds, defined by an input argument variable to the top-level function.
 * Note that the TRIPCOUNT directive on the loops only influences reporting, it does not set bounds for synthesis.
 * Neither the top-level function nor any of the sub-functions are pipelined in this example.
-* The pipeline directive must be applied to the inner-most loop in each function – the innermost loops have no variable-bounded loops inside of them which are required to be unrolled and the outer loop will simply keep the inner loop fed with data.
+* The pipeline directive must be applied to the inner-most loop in each function – the innermost loops have no variable-bounded loops inside which are required to be unrolled and the outer loop will simply keep the inner loop fed with data.
 
-7. Expand the **yuv_scale** in the Directives tab, right-click on **YUV_SCALE_LOOP_Y** object and select **insert directives …**, and select **PIPELINE** as the directive.
+7. Expand the **yuv_scale** in the *Directives* tab, right-click on **YUV_SCALE_LOOP_Y** object and select **insert directives …**, and select **PIPELINE** as the directive.
 
-8. Leave II (Initiation Interval) blank as Vivado HLS will try for an II=1, one new input every clock
-     cycle.
+8. Leave *II* (Initiation Interval) blank as Vivado HLS will try for an II=1, one new input every clock cycle.
 
 9. Click **OK**.
 
 10. Similarly, apply the **PIPELINE** directive to **YUV2RGB_LOOP_Y** and **RGB2YUV_LOOP_Y** objects.
-      At this point, the Directive tab should look like as follows.
+      At this point, the *Directive* tab should look like as follows.
 
         <p align="center">
         <img src ="./images/lab2/Figure12.png">
@@ -265,9 +244,9 @@ After completing this lab, you will be able to:
 
 11. Click on the **Synthesis** button.
 
-12. When the synthesis is completed, select **Project > Compare Reports…** to compare the two solutions
+12. When the synthesis is completed, select **Project > Compare Reports…** to compare the two solutions.
 
-13. Select Solution1 and Solution2 from the **Available Reports**, and click on the **Add>> button**.
+13. Select *Solution1* and *Solution2* from the **Available Reports**, and click on the **Add>>** button.
 
 14. Observe that the latency reduced.
             <p align="center">
@@ -276,7 +255,7 @@ After completing this lab, you will be able to:
             <p align = "center">
             <i>Performance comparison after pipelining</i>
             </p>
-        In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration count, whereas in Solution2 the new total loop latency of the inner-most loop is loop_body_latency + loop iteration count.
+    In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration count, whereas in Solution2 the new total loop latency of the inner-most loop is loop_body_latency + loop iteration count.
 
 15. Scroll down in the comparison report to view the resources utilization. Observe that the FFs, LUTs, and DSP48E utilization increased whereas BRAM remained same.
 
@@ -293,15 +272,14 @@ After completing this lab, you will be able to:
 
 1. Select **Project > New Solution** or click on button from the tools bar.
 
-2. A Solution Configuration dialog box will appear. Click the **Finish** button (with copy from Solution2
+2. A *Solution Configuration* dialog box will appear. Click the **Finish** button (with copy from Solution2
     selected).
 
 3. Close all inactive solution windows by selecting **Project > Close Inactive Solution Tabs**.
 
-4. Make sure that the **yuv_filter.c** source is opened in the information pane and select the Directive
-    tab.
+4. Make sure that the **yuv_filter.c** source is opened in the information pane and select the *Directive* tab.
 
-5. Select function yuv_filter in the directives pane, right-click on it and select **Insert Directive...**
+5. Select function yuv_filter in the *Directive* pane, right-click on it and select **Insert Directive...**
 
 6. A pop-up menu shows up listing various directives. Select **DATAFLOW** directive and click **OK**.
 
@@ -309,7 +287,7 @@ After completing this lab, you will be able to:
 
 8. When the synthesis is completed, the synthesis report is automatically opened.
 
-9. Observe additional information, **Dataflow** Type, in the Performance Estimates section is mentioned.
+9. Observe additional information, **Dataflow** Type, in the *Performance Estimates* section is mentioned.
    <p align="center">
    <img src ="./images/lab2/Figure15.png">
    </p>
@@ -325,8 +303,8 @@ can start processing new inputs before the currents input data are output.
 that the design can achieve close to the theoretical limit (1920x1280 = 2457600) of
 processing one pixel every clock cycle.    
 
-10. Scrolling down into the Utilization Estimates, observe that the number of BRAMs required has
-    doubled. This is due to the default dataflow ping-pong buffering.
+10. Scrolling down into the *Utilization Estimates* section, observe that the number of BRAMs required has
+    doubled. This is due to the default ping-pong buffering in dataflow.
 
     <p align="center">
     <img src ="./images/lab2/Figure16.png">
@@ -350,7 +328,7 @@ in ping-pong buffers where random accesses are allowed).
 
 1. Select **Solution > Solution Settings…** to access the configuration command settings.
 
-2. In the Configuration Settings dialog box, select **General** and click the **Add…** button.
+2. In the *Configuration Settings* dialog box, select **General** and click the **Add…** button.
 
 3. Select **config_dataflow** as the command using the drop-down button and **fifo** as the
     default_channel. Enter **2** as the fifo_depth. Click OK.
@@ -384,8 +362,7 @@ in ping-pong buffers where random accesses are allowed).
 
    An Export RTL Dialog box will open.
 
-2. Click on the drop-down button of the **Evaluate Generated RTL** field and select **VHDL** as the
-     language and click on the **Vivado synthesis, place and route** check box underneath.
+2. Click on the drop-down button of the **Evaluate Generated RTL** field and select **VHDL** as the language and click on the **Vivado synthesis, place and route** check box underneath.
 
 3. Click **OK** and the implementation run will begin. You can observe the progress in the Vivado HLS
     Console window. When the run is completed the implementation report will be displayed in the
@@ -414,42 +391,28 @@ simple 2 element FIFOs using the Dataflow command configuration.
 
 1. Answer the following questions for yuv_filter:
 
-   Estimated clock period: 10.723 ns 
-
-   Worst case latency: 51621125 
-
-   Number of DSP48E used: 6
-
-   Number of BRAMs used: 12288
-
-   Number of FFs used: 679 
-
-   Number of LUTs used: 1431 
+   Estimated clock period: **10.723 ns**  
+   Worst case latency: **51621125**  
+   Number of DSP48E used: **6**  
+   Number of BRAMs used: **12288**  
+   Number of FFs used: **679**  
+   Number of LUTs used: **1431**  
 
 2. Answer the following questions rgb2yuv:
 
-   Estimated clock period: 10.283 ns 
-
-   Worst case latency: 17207041 
-
-   Number of DSP48E used: 3
-
-   Number of FFs used: 194 
-
-   Number of LUTs used: 495 
+   Estimated clock period: **10.283 ns**  
+   Worst case latency: **17207041**  
+   Number of DSP48E used: **3**  
+   Number of FFs used: **194**  
+   Number of LUTs used: **495**  
 
 3. Answer the following questions for yuv2rgb:
 
-   Estimated clock period: 10.703 ns 
-
-   Worst case latency: 19664641 
-
-   Number of DSP48E used: 3
-
-   Number of FFs used: 195 
-
-   Number of LUTs used: 406 
-
+   Estimated clock period: **10.703 ns**  
+   Worst case latency: **19664641**  
+   Number of DSP48E used: **3**  
+   Number of FFs used: **195**  
+   Number of LUTs used: **406**  
 
 
 
