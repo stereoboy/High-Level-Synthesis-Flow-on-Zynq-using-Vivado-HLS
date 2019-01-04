@@ -110,10 +110,11 @@ After completing this lab, you will be able to:
    <p align = "center">
    <i>Latency computation after applying TRIPCOUNT pragma</i>
    </p>
-4. Looking at the report, and answer the following question.
+   
+   #### Question 1
 
-     #### Question 1
-
+     Answer the following question pertaining to yuv_filter function.  
+     
      Estimated clock period:  
      Worst case latency:  
      Number of DSP48E used:  
@@ -130,6 +131,7 @@ After completing this lab, you will be able to:
    <p align = "center">
    <i>Vivado HLS automatically inlining function</i>
    </p>
+   
 6. Observe that there are three entries – rgb2yuv.rpt, yuv_filter.rpt, and yuv2rgb.rpt under the syn
      report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was
      inlined into the yuv_filter function.
@@ -159,29 +161,29 @@ After completing this lab, you will be able to:
 9. In the report tab, expand **Detail > Instance** section of the *Utilization Estimates* and click on the
 **grp_rgb2yuv_fu_244 (rgb2yuv)** entry to open the report.
 
-10. Answer the following question pertaining to *rgb2yuv* function.
+   #### Question 2
 
-    #### Question 2
-
+    Answer the following question pertaining to rgb2yuv function.  
+    
     Estimated clock period:  
     Worst case latency:  
     Number of DSP48E used:  
     Number of FFs used:  
     Number of LUTs used:  
 
-11. Similarly, open the *yuv2rgb* report.
-
-12. Answer the following question pertaining to yuv2rgb function.
+10. Similarly, open the *yuv2rgb* report.
 
     #### Question 3
 
+    Answer the following question pertaining to yuv2rgb function.  
+    
     Estimated clock period:  
     Worst case latency:  
     Number of DSP48E used:  
     Number of FFs used:  
     Number of LUTs used:
 
-13. For the *rgb2yuv* function the worst case latency is reported as **17207041** clock cycles. The reported latency can be estimated as follows.
+11. For the *rgb2yuv* function the worst case latency is reported as **17207041** clock cycles. The reported latency can be estimated as follows.
 
 * RGB2YUV_LOOP_Y total loop latency = 7 x 1280 = 8960 cycles
 * 1 entry and 1 exit clock for loop RGB2YUV_LOOP_Y = 8962 cycles
@@ -232,15 +234,14 @@ After completing this lab, you will be able to:
 
 9. Click **OK**.
 
-10. Similarly, apply the **PIPELINE** directive to **YUV2RGB_LOOP_Y** and **RGB2YUV_LOOP_Y** objects.
-      At this point, the *Directive* tab should look like as follows.
+10. Similarly, apply the **PIPELINE** directive to **YUV2RGB_LOOP_Y** and **RGB2YUV_LOOP_Y** objects. At this point, the *Directive* tab should look like as follows.
 
-        <p align="center">
-        <img src ="./images/lab2/Figure12.png">
-        </p>
-        <p align = "center">
-        <i>PIPELINE directive applied</i>
-        </p>
+    <p align="center">
+    <img src ="./images/lab2/Figure12.png">
+    </p>
+    <p align = "center">
+    <i>PIPELINE directive applied</i>
+    </p>
 
 11. Click on the **Synthesis** button.
 
@@ -249,22 +250,22 @@ After completing this lab, you will be able to:
 13. Select *Solution1* and *Solution2* from the **Available Reports**, and click on the **Add>>** button.
 
 14. Observe that the latency reduced.
-            <p align="center">
-            <img src ="./images/lab2/Figure13.png">
-            </p>
-            <p align = "center">
-            <i>Performance comparison after pipelining</i>
-            </p>
+    <p align="center">
+    <img src ="./images/lab2/Figure13.png">
+    </p>
+    <p align = "center">
+    <i>Performance comparison after pipelining</i>
+    </p>
     In Solution1, the total loop latency of the inner-most loop was loop_body_latency x loop iteration count, whereas in Solution2 the new total loop latency of the inner-most loop is loop_body_latency + loop iteration count.
 
 15. Scroll down in the comparison report to view the resources utilization. Observe that the FFs, LUTs, and DSP48E utilization increased whereas BRAM remained same.
 
-      <p align="center">
-      <img src ="./images/lab2/Figure14.png">
-      </p>
-      <p align = "center">
-      <i>Resources utilization after pipelining</i>
-      </p>
+    <p align="center">
+    <img src ="./images/lab2/Figure14.png">
+    </p>
+    <p align = "center">
+    <i>Resources utilization after pipelining</i>
+    </p>
 
 ### Apply DATAFLOW Directive and Configuration Command
 
@@ -387,9 +388,9 @@ accesses allowed the costly memory buffers associated with dataflow optimization
 simple 2 element FIFOs using the Dataflow command configuration.
 
 
-### Answer
+### Answers
 
-1. Answer the following questions for yuv_filter:
+1. Answer the following questions for yuv_filter function:
 
    Estimated clock period: **10.723 ns**  
    Worst case latency: **51621125**  
@@ -398,7 +399,7 @@ simple 2 element FIFOs using the Dataflow command configuration.
    Number of FFs used: **679**  
    Number of LUTs used: **1431**  
 
-2. Answer the following questions rgb2yuv:
+2. Answer the following questions rgb2yuv function:
 
    Estimated clock period: **10.283 ns**  
    Worst case latency: **17207041**  
@@ -406,7 +407,7 @@ simple 2 element FIFOs using the Dataflow command configuration.
    Number of FFs used: **194**  
    Number of LUTs used: **495**  
 
-3. Answer the following questions for yuv2rgb:
+3. Answer the following questions for yuv2rgb function:
 
    Estimated clock period: **10.703 ns**  
    Worst case latency: **19664641**  
