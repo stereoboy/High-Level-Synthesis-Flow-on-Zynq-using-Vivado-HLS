@@ -46,32 +46,30 @@ After completing this lab, you will be able to:
 3. Click **Browse…** button of the Location field and browse to **c:\xup\hls\labs\lab3** and then click
      **OK**.
 
-4. For Project Name, type **dct.prj**.
+4. For Project Name, type **dct.prj** and click **Next**.
 
-5. Click **Next**.
-
-6. In the Add/Remove Files for the source files, type **dct** as the function name (the provided source
+5. In the Add/Remove Files for the source files, type **dct** as the function name (the provided source
      file contains the function, to be synthesized, called dct).
 
-7. Click the **Add Files…** button, select **dct.c** file from the **c:\xup\hls\labs\lab3** folder, and then click
+6. Click the **Add Files…** button, select **dct.c** file from the **c:\xup\hls\labs\lab3** folder, and then click
      **Open**.
 
-8. Click **Next**.
+7. Click **Next**.
 
-9. In the *Add/Remove Files* for the testbench, click the **Add Files…** button, select **dct_test.c**, **in.dat**,
+8. In the *Add/Remove Files* for the testbench, click the **Add Files…** button, select **dct_test.c**, **in.dat**,
      **out.golden.dat** files from the **c:\xup\hls\labs\lab3** folder and click **Open**.
 
-10. Click **Next**.
+9. Click **Next**.
 
-11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
+10. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
         period as 10. Leave Uncertainty field blank.
 
-12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
+11. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
         select **xc7z020clg400-1**.
 
-13. Click **Finish**.
+12. Click **Finish**.
 
-14. Double-click on the **dct.c** under the source folder to open its content in the information pane.
+13. Double-click on the **dct.c** under the source folder to open its content in the information pane.
         <p align="center">
         <img src ="./images/lab3/Figure2.png">
         </p>
@@ -410,12 +408,13 @@ indicates that the latency is 209 clock cycles ((24+2)*8+1).
 
 11. Scroll down in the comparison report to view the resources utilization. Observe the increase in the FF resource utilization (almost double).
 
-         <p align="center">
-         <img src ="./images/lab3/Figure25.png">
-         </p>
-         <p align = "center">
-         <i>Resources utilization after array partitioning</i>
-         </p>
+     <p align="center">
+     <img src ="./images/lab3/Figure25.png">
+     </p>
+     <p align = "center">
+     <i>Resources utilization after array partitioning</i>
+     </p>
+
 12. Expand the Loop entry in the **dct.rpt** entry and observe that the Pipeline II is now 1.
 
 #### Perform resource analysis by switching to the Analysis perspective and looking at the dct resources profile view.
@@ -560,46 +559,6 @@ more dataflow processes.
    <i>Performance analysis after the INLINE directive</i>
    </p> 
 
-10. Switch to the Synthesis perspective.
-
-### Apply RESHAPE Directive
-
-#### Create a new solution by copying the previous solution (Solution6) settings. Apply the RESHAPE directive. Generate the solution and understand the output.
-
-1. Select **Project > New Solution**.
-
-2. A *Solution Configuration* dialog box will appear. Click the **Finish** button (with Solution6 selected).
-
-3. Select *ARRAY_PARTITION* directive applied to the **buf_2d_in** array of the **dct** function in the *Directive* pane, right-click, and select **Modify Directive**. Select **ARRAY_RESHAPE** directive, enter **2** as the dimension, and click **OK**.
-
-4. Similarly, change *ARRAY_PARTITION* directive applied to the **col_inbuf** array of the dct_2d function in
-     the Directive pane, to ARRAY_RESHAPE with the dimension of 2.
-
-5. Assign the *ARRAY_RESHAPE* directive with dimension of 2 to the **dct_coeff_table** array.
-    <p align="center">
-    <img src ="./images/lab3/Figure33.png">
-    </p>
-    <p align = "center">
-    <i>RESHAPE directive applied</i>
-    </p> 
-
-6. Click on the **Synthesis** ![synthesis](images/lab3/synthesis.png) button.
-
-7. When the synthesis is completed, the synthesis report is automatically opened.
-
-8. Observe that both latency and Dataflow pipeline throughput has regressed. The BRAM resource utilization increased from 3 to 7.
-
-* Reviewing the synthesis log will provide some clues. There are warnings in the scheduling
-phase for read_data stating that II=1 could not be achieved. In fact, read_data complains
-about the conflict of read and write operations.
-* The problem here is due to the fact that an update to a single element in a reshaped array
-requires that the entire word be read, the single element updated and the entire word written
-back: an array that has been reshaped requires a read-modify-write cycle (Vivado HLS does
-not implement byte-masking on writes).
-* This operation negatively impacts the maximum write bandwidth for such an array.
-
-9. Thus it can be seen the directives have to be applied carefully.
-
 10. Close Vivado HLS by selecting **File > Exit**.
 
 ## Conclusion
@@ -610,9 +569,7 @@ loop is unrolled, resources utilization increases as operations are done concurr
 may improve performance but will increase BRAM utilization. When INLINE directive is applied to a
 function, the lower level hierarchy is automatically dissolved. When DATAFLOW directive is applied, the
 default memory buffers (of ping-pong type) are automatically inserted between the top-level functions and
-loops. The RESHAPE directive will allow multiple accesses to BRAM, however, care should be taken if a
-single element requires modification as it will result in read-modify-write operation for the entire word. The
-Analysis perspective and console logs can provide insight on what is going on.
+loops. The Analysis perspective and console logs can provide insight on what is going on.
 
 #### Answers
 
