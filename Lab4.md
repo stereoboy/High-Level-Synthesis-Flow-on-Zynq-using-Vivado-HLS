@@ -1,12 +1,5 @@
 # Creating a Processor System Lab
 
-## Introduction
-
-This lab introduces a design flow to generate a IP-XACT adapter from a design using Vivado HLS and
-using the generated IP-XACT adapter in a processor system using IP Integrator in Vivado.
-
-**Note.** This lab does not work for PYNQ-Z1.
-
 ## Objectives
 
 After completing this lab, you will be able to:
@@ -21,18 +14,12 @@ design in Vivado HLS
 The design consists of a FIR filter to filter a 4 KHz tone added to CD quality (48 KHz) music. The
 characteristic of the filter is as follows:
 
-FS=48000 Hz
-
-FPASS1=2000 Hz
-
-FSTOP1=3800 Hz
-
-FSTOP2=4200 Hz
-
-FPASS2=6000 Hz
-
-APASS1=APASS2=1 dB
-
+FS=48000 Hz  
+FPASS1=2000 Hz  
+FSTOP1=3800 Hz  
+FSTOP2=4200 Hz  
+FPASS2=6000 Hz  
+APASS1=APASS2=1 dB  
 ASTOP=60 dB
 
 This lab requires you to develop a peripheral core of the designed filter that can be instantiated in a
@@ -44,59 +31,51 @@ headphone.
 
 ### Create a New Project 
 
-#### Create a new project in Vivado HLS targeting xc7z020clg400-1(pynq)
+#### Create a new project in Vivado HLS targeting xc7z020clg400-1 device
 
-1. Launch Vivado HLS: **Select Start > All Programs > Xilinx Design Tools > Vivado 2018.2 >
-    Vivado HLS > Vivado HLS 2018.2**
+1. Select **Start > Xilinx Design Tools > Vivado HLS 2018.2**  
 
-  A **Getting Started GUI** will appear.
+   A **Getting Started GUI** will appear.
 
-2. In the Getting Started section, click on Create New Project. The New Vivado HLS Project wizard
+2. In the Getting Started section, click on *Create New Project*. The **New Vivado HLS Project** wizard
      opens.
 
-3. Click Browse… button of the Location field, browse to **c:\xup\hls\labs\lab4**, and then click OK.
+3. Click **Browse…** button of the *Location* field, browse to **c:\xup\hls\labs\lab4**, and then click **OK**.
 
-4. For Project Name, type fir.prj
+4. For *Project* Name, type **fir.prj** and click **Next**.
 
-5. Click Next.
-
-6. In the Add/Remove Files for the source files, type **fir** as the function name (the provided source
+5. In the *Add/Remove Files* for the source files, type **fir** as the function name (the provided source
      file contains the function, to be synthesized, called fir).
 
-7. Click the Add Files… button, select **fir.c** and **fir_coef.dat** files from the c:\xup\hls\labs\lab4 folder,
-     and then click Open.
+6. Click the *Add Files…* button, select **fir.c** and **fir_coef.dat** files from the **c:\xup\hls\labs\lab4** folder,
+     and then click **Open**.
 
-8. Click Next.
+7. Click **Next**.
 
-9. In the Add/Remove Files for the testbench, click the Add Files… button, select **fir_test.c** file from
-     the c:\xup\hls\labs\lab4 folder and click Open.
+8. In the *Add/Remove Files* for the testbench, click the *Add Files…* button, select **fir_test.c** file from
+     the **c:\xup\hls\labs\lab4** folder and click **Open**.
 
-10. Click Next.
+9. Click **Next**.
 
-11. In the Solution Configuration page, leave Solution Name field as solution1 and set the clock
-      ​    period as 10. Leave Uncertainty field blank.
+10. In the *Solution Configuration* page, leave *Solution* Name field as solution1 and set the clock period as 10. Leave Uncertainty field blank.
 
-12. Click on Part’s Browse button, and select the following filters, using the Parts Specify option, to
-      ​    select xc7z020clg400-1.
+11. Click on Part’s Browse button, and select the following filters, using the *Parts Specify* option, to select **xc7z020clg400-1**.
 
-13. Click Finish.
+12. Click **Finish**.
 
-          You will see the created project in the Explorer view. Expand various sub-folders to see the
-          entries under each sub-folder.
+    You will see the created project in the Explorer view. Expand various sub-folders to see the entries under each sub-folder.
 
-14. Double-click on the fir.c under the source folder to open its content in the information pane.
-      ​    <p align="center">
-      ​    <img src ="./images/lab4/Figure1.png">
-      ​    </p>
-      ​    <p align = "center">
-      ​    <i>The design under consideration</i>
-      ​    </p>
-      ​    The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them
-      ​    are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file
-      ​    called fir_coef.dat located in the current directory. The sequential algorithm is applied and
-      ​    accumulated value (sample out) is computed in variable acc of type acc_t.
+13. Double-click on the *fir.c* under the source folder to open its content in the information pane.
+    <p align="center">
+    <img src ="./images/lab4/Figure1.png">
+    </p>
+    <p align = "center">
+    <i>The design under consideration</i>
+    </p>
+    
+    The FIR filter expects x as a sample input and pointer to the computed sample out. Both of them are defined of data type data_t. The coefficients are loaded in array c of type coef_t from the file called fir_coef.dat located in the current directory. The sequential algorithm is applied and accumulated value (sample out) is computed in variable acc of type acc_t.
 
-15. Double-click on the **fir.h** in the outline tab to open its content in the information pane.
+14. Double-click on the **fir.h** in the outline tab to open its content in the information pane.
     <p align="center">
     <img src ="./images/lab4/Figure2.png">
     </p>
@@ -104,15 +83,9 @@ headphone.
     <i>The header file</i>
     </p>
 
-    The header file includes ap_cint.h so user defined data width (of arbitrary precision) can be used.
-    It also defines number of taps (N), number of samples to be generated (in the testbench), and
-    data types coef_t, data_t, and acc_t. The coef_t and data_t are short (16 bits). Since the
-    algorithm iterates (multiply and accumulate) over 59 taps, there is a possibility of bit growth of 6
-    bits and hence acc_t is defined as int38. Since the acc_t is bigger than sample and coefficient
-    width, they have to cast before being used (like in lines 16, 18, and 21 of fir.c).
+    The header file includes ap_cint.h so user defined data width (of arbitrary precision) can be used. It also defines number of taps (N), number of samples to be generated (in the testbench), and data types coef_t, data_t, and acc_t. The coef_t and data_t are short (16 bits). Since the algorithm iterates (multiply and accumulate) over 59 taps, there is a possibility of bit growth of 6 bits and hence acc_t is defined as int38. Since the acc_t is bigger than sample and coefficient width, they have to cast before being used (like in lines 16, 18, and 21 of fir.c).
 
-16. Double-click on the **fir_test.c** under the testbench folder to open its content in the information
-    pane.
+15. Double-click on the **fir_test.c** under the testbench folder to open its content in the information pane.
 
     Notice that the testbench opens fir_impulse.dat in write mode, and sends an impulse (first sample
     being 0x8000.
