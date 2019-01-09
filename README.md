@@ -1,19 +1,15 @@
 # High-Level-Synthesis-Flow-on-Zynq-using-Vivado-HLS
 
-This course provides professors with an understanding of high-level synthesis design methodologies necessary to develop digital systems using Vivado HLS 2018.2 version.
+This course provides users with an understanding of high-level synthesis design methodologies necessary to develop digital systems using Vivado HLS 2018.2 version.
 
-## Source Files Setup
+## Required Setup
 
-To use the source files for each of the labs in this workshop, you have to clone this repository from XUP Github. For that, do the following:
-
-#### To be completed
+Clone this repository and then copy the **labs** directory to a working directory. The recommended working directory is **c:/xup/hls**.  After copying the directory, all labs will be carried out in their respective folders located at **c:/xup/hls/labs**. 
 
 ---
 #### In the instructions for the labs;
 
-**{sources}** Lab source files. You can download the source files for the labs from [here](https://www.xilinx.com/support/university/vivado/vivado-workshops/Vivado-high-level-synthesis-flow-zynq.html)
-
-**{labs}** The actual Lab contents.
+**{labs}** refers to **c:/xup/hls/labs**.
 
 ---
 **NOTE**
@@ -61,4 +57,4 @@ discrete cosine transformation (DCT) on an 8x8 block of data.
 This lab introduces a design flow to generate a IP-XACT adapter from a design using Vivado HLS and
 using the generated IP-XACT adapter in a processor system using IP Integrator in Vivado.
 
-**Note.** This lab does not work for PYNQ-Z1.
+**Note.** Since PYNQ-Z1 board does not have Audio CODEC chip, this lab cannot be ported/verfied on the board, though design flow is still applicable to the board.
