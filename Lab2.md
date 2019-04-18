@@ -83,6 +83,7 @@ After completing this lab, you will be able to:
     <p align = "center">
     <i>Latency computation after applying TRIPCOUNT pragma</i>
     </p>
+    
     **Question 1**  
     Answer the following question pertaining to yuv_filter function.   
     Estimated clock period:   
