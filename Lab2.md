@@ -132,7 +132,7 @@ After completing this lab, you will be able to:
 
 9. Similarly, open the *yuv2rgb* report.  
 
-    **Question 3 **  
+    **Question 3**  
     Answer the following question pertaining to yuv2rgb function.   
     Estimated clock period:   
     Worst case latency:   
