@@ -73,7 +73,9 @@ After completing this lab, you will be able to:
 ### Apply TRIPCOUNT Pragma
 #### Open the source file and uncomment pragma lines, re-synthesize, and observe the resources used as well as estimated latencies. Answer the questions listed in the detailed section of this step.
 1. To assist in providing loop-latency estimates, Vivado HLS provides a TRIPCOUNT directive which allows limits on the variables bounds to be specified by the user. In this design, such directives have been embedded in the source code, in the form of #pragma statements.
+
 2. Uncomment the #pragma lines (50, 53, 90, 93, 130, 133) to define the loop bounds and save the file.
+
 3. Synthesize the design by selecting **Solution > Run C Synthesis > Active Solution**. View the synthesis report when the process is completed.
     <p align="center">
     <img src ="./images/lab2/Figure6.png">
@@ -81,15 +83,15 @@ After completing this lab, you will be able to:
     <p align = "center">
     <i>Latency computation after applying TRIPCOUNT pragma</i>
     </p>
+    **Question 1**  
+    Answer the following question pertaining to yuv_filter function.   
+    Estimated clock period:   
+    Worst case latency:   
+    Number of DSP48E used:   
+    Number of BRAMs used:   
+    Number of FFs used:   
+    Number of LUTs used:  
 
-    **Question 1**
-    Answer the following question pertaining to yuv_filter function. 
-    Estimated clock period: 
-    Worst case latency: 
-    Number of DSP48E used: 
-    Number of BRAMs used: 
-    Number of FFs used: 
-    Number of LUTs used: 
 4. Scroll the *Console* window and note that yuv_scale function is automatically inline into the yuv_filter function.
     <p align="center">
     <img src ="./images/lab2/Figure7.png">
@@ -97,6 +99,7 @@ After completing this lab, you will be able to:
     <p align = "center">
     <i>Vivado HLS automatically inlining function</i>
     </p>
+
 5. Observe that there are three entries – rgb2yuv.rpt, yuv_filter.rpt, and yuv2rgb.rpt under the syn report folder in the Explorer view. There is no entry for yuv_scale.rpt since the function was inlined into the yuv_filter function.
     You can access lower level module’s report by either traversing down in the top-level report under components (under Utilization Estimates > Details > Component) or from the reports container in the project explorer.
 
@@ -107,32 +110,36 @@ After completing this lab, you will be able to:
     <p align = "center">
     <i>Loop latency</i>
     </p>
-8. You can verify this by opening an analysis perspective view, expanding the **YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
+
+7. You can verify this by opening an analysis perspective view, expanding the **YUV_SCALE_LOOP_X** entry, and then expanding the **YUV_SCALE_LOOP_Y** entry.
     <p align="center">
     <img src ="./images/lab2/Figure9.png">
     </p>
     <p align = "center">
     <i>Design analysis view of the YUV_SCALE_LOOP_Y loop</i>
     </p>
-9. In the report tab, expand **Detail > Instance** section of the *Utilization Estimates* and click on the **grp_rgb2yuv_fu_244 (rgb2yuv)** entry to open the report.
 
-    **Question 2**
-    Answer the following question pertaining to rgb2yuv function.
-    Estimated clock period:
-    Worst case latency:
-    Number of DSP48E used:
-    Number of FFs used:
-    Number of LUTs used:
-10. Similarly, open the *yuv2rgb* report.
+8. In the report tab, expand **Detail > Instance** section of the *Utilization Estimates* and click on the **grp_rgb2yuv_fu_244 (rgb2yuv)** entry to open the report.
 
-    **Question 3**
-    Answer the following question pertaining to yuv2rgb function. 
-    Estimated clock period: 
-    Worst case latency: 
-    Number of DSP48E used: 
-    Number of FFs used: 
-    Number of LUTs used:
-11. For the *rgb2yuv* function the worst case latency is reported as **17207041** clock cycles. The reported latency can be estimated as follows.
+    **Question 2**  
+    Answer the following question pertaining to rgb2yuv function.  
+    Estimated clock period:  
+    Worst case latency:  
+    Number of DSP48E used:  
+    Number of FFs used:  
+    Number of LUTs used:  
+
+9. Similarly, open the *yuv2rgb* report.
+
+    **Question 3 **   
+    Answer the following question pertaining to yuv2rgb function.   
+    Estimated clock period:   
+    Worst case latency:   
+    Number of DSP48E used:   
+    Number of FFs used:   
+    Number of LUTs used:  
+
+10. For the *rgb2yuv* function the worst case latency is reported as **17207041** clock cycles. The reported latency can be estimated as follows.
 * RGB2YUV_LOOP_Y total loop latency = 7 x 1280 = 8960 cycles
 * 1 entry and 1 exit clock for loop RGB2YUV_LOOP_Y = 8962 cycles
 * RGB2YUV_LOOP_X loop body latency = 8962 cycles
@@ -273,25 +280,25 @@ in ping-pong buffers where random accesses are allowed).
 In this lab, you learned that even though this design could not be pipelined at the top-level, a strategy of pipelining the individual loops and then using dataflow optimization to make the functions operate in parallel was able to achieve the same high throughput, processing one pixel per clock. When DATAFLOW directive is applied, the default memory buffers (of ping-pong type) are automatically inserted between the functions. Using the fact that the design used only sequential (streaming) data accesses allowed the costly memory buffers associated with dataflow optimization to be replaced with simple 2 element FIFOs using the Dataflow command configuration.
 
 ## Answers
-1. **Answers for question 1:**
-    Estimated clock period: **10.723 ns** 
-    Worst case latency: **51621125** 
-    Number of DSP48E used: **6** 
-    Number of BRAMs used: **12288** 
-    Number of FFs used: **679** 
-    Number of LUTs used: **1431**  
-2. **Answers for question 2:**
-    Estimated clock period: **10.283 ns** 
-    Worst case latency: **17207041** 
-    Number of DSP48E used: **3** 
-    Number of FFs used: **194** 
-    Number of LUTs used: **495**  
-3. **Answers for question 3:**
-    Estimated clock period: **10.703 ns** 
-    Worst case latency: **19664641** 
-    Number of DSP48E used: **3** 
-    Number of FFs used: **195** 
-    Number of LUTs used: **406**  
+1. **Answers for question 1:**  
+    Estimated clock period: **10.723 ns**   
+    Worst case latency: **51621125**   
+    Number of DSP48E used: **6**   
+    Number of BRAMs used: **12288**   
+    Number of FFs used: **679**   
+    Number of LUTs used: **1431**    
+2. **Answers for question 2:**  
+    Estimated clock period: **10.283 ns**   
+    Worst case latency: **17207041**   
+    Number of DSP48E used: **3**   
+    Number of FFs used: **194**   
+    Number of LUTs used: **495**    
+3. **Answers for question 3:**  
+    Estimated clock period: **10.703 ns**   
+    Worst case latency: **19664641**   
+    Number of DSP48E used: **3**   
+    Number of FFs used: **195**   
+    Number of LUTs used: **406**   
 
 
 
