@@ -8,6 +8,13 @@ After completing this lab, you will be able to:
 * Improve performance using PIPELINE directive
 * Distinguish between DATAFLOW directive and Configuration Command functionality
 
+## Stereoboy's Comment
+* For Linux
+```
+$ source ${INSTALL_DIR}/Xilinx/Vivado/2018.2/.settings64-Vivado.sh
+```
+* By setting **Dataflow**, we can reduce Interval not Latency
+
 ## Steps
 
 ### Create a Vivado HLS Project from Command Line
@@ -60,7 +67,7 @@ After completing this lab, you will be able to:
 * The scale function simply applies individual scale factors, supplied as top-level arguments to the Y’UV components.
 * Notice that most of the variables are of user-defined (typedef) and aggregate (e.g. structure, array) types.
 * Also notice that the original source used malloc() to dynamically allocate storage for the internal image buffers. While appropriate for such large data structures in software, malloc() is not synthesizable and is not supported by Vivado HLS.
-* A viable workaround is conditionally compiled into the code, leveraging the __SYNTHESIS__ macro. Vivado HLS automatically defines the __SYNTHESIS__ macro when reading any code. This ensure the original malloc() code is used outside of synthesis but Vivado HLS will use the workaround when synthesizing.
+* A viable workaround is conditionally compiled into the code, leveraging the \_\_SYNTHESIS\_\_ macro. Vivado HLS automatically defines the \_\_SYNTHESIS\_\_ macro when reading any code. This ensure the original malloc() code is used outside of synthesis but Vivado HLS will use the workaround when synthesizing.
 2. Expand the **syn > report** folder in the *Explorer* view and double-click yuv_filter_csynh.rpt entry to open the synthesis report.
 3. Each of the loops in this design has variable bounds – the width and height are defined by members of input type image_t. When variables bounds are present on loops the total latency of the loops cannot be determined: this impacts the ability to perform analysis using reports. Hence, **“?”** is reported for various latencies.
     <p align="center">
