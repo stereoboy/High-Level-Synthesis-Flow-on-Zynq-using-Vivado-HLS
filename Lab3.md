@@ -7,6 +7,28 @@ After completing this lab, you will be able to:
 * Distinguish between DATAFLOW directive and Configuration Command functionality
 * Apply memory partitions techniques to improve resource utilization
 
+## Stereoboy's Comment
+* How to decide which loop to apply PIPELINE
+  * Lab2와는 달리 inner loop에 `+=` operation 즉, accumulate가 필요하다. 즉 loop 사이에 dependency가 생겨버린다.
+  * Solution2(inner loop pipelined) vs Solution3 (outer loop pipelined)
+    * Solution2의 Analysis Perspective의 Schedule Viewer의 DCT_Inner_Loop를 보면 엄청나게 빈곳이 많다. 이것은 최적화가 잘 되지 않은 것으로 보인다.
+    <p align="center">
+    <img src ="./images/lab3/Stereoboy_00.png">
+    </p>
+    <p align = "center">
+    <i>Validating the design</i>
+    </p>
+    * Solution3의 Analysis Perspective의 Schedule Viewer의 DCT_OUter_Loop를 보면 상대적으로 겹치는 영역이 많다. 절대적으로 비교할 수 는 없지만 Outer Loop는 서로 dependency가 전혀 없기 때문에 Pipeline에 더 적합한 듯 하다.
+    <p align="center">
+    <img src ="./images/lab3/Stereoboy_01.png">
+    </p>
+    <p align = "center">
+    <i>Validating the design</i>
+    </p>
+
+* *Solution4* 에서 **col_inbuf** 에 대한 Partition을 설정해주지 않았을때 오히려 더 빠르다. 하지만 *solution6* 에서 **col_inbuf** 의 설정이 없으면 원하는 latency를 얻지 못한다.
+* > Partitioning memory may improve performance but will increase BRAM utilization. 
+  * *Conclusion* 의 이 문장은 잘못되었다. BRAM이 아니라 DSP48E가 늘어나서 RAM 역할을 한다.
 ## Steps
 
 ### Validate the Design from Command Line
