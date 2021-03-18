@@ -7,6 +7,35 @@ design in Vivado HLS
 * Create a processor system using IP Integrator in Vivado
 * Integrate the generated IP-XACT adapter into the created processor system
 
+## Stereoboy's Comment
+* update for zybo-z7-20
+```diff
+diff --git a/source/lab4/zybo_z7_20_audio_project_create.tcl b/source/lab4/zybo_z7_20_audio_project_create.tcl
+index 4b3b7eb..d95c3ed 100644
+--- a/source/lab4/zybo_z7_20_audio_project_create.tcl
++++ b/source/lab4/zybo_z7_20_audio_project_create.tcl
+@@ -16,7 +16,7 @@ startgroup
+ set_property -dict [list CONFIG.PCW_TTC0_PERIPHERAL_ENABLE {0}] [get_bd_cells processing_system7_0]
+ endgroup
+ regenerate_bd_layout
+-set_property ip_repo_paths  C:/xup/hls/labs/lab4/ip_repo [current_project]
++set_property ip_repo_paths  ./ip_repo [current_project]
+ update_ip_catalog
+
+```
+* Process Overview
+  * PC audio-out을 Pynq 보드의 audio-in에 연결
+  * Audio Codec Chip에서 받고 ADC로 IIS로 변환 ZED Audio Ctrl에서 SDATA_I로 받는다. 
+    * Zynq PS가 I2C로 Audio Chip제어
+  * Zynq PS가 AXI를 통해서 ZED Audio Ctrl에서 Audio 데이터를 가져온다.
+  * PS가 Fir Filter로 보낸다.
+  * Fir Filtering 한다.
+  * PS가 Fir Filter로 부터 결과물을 얻어온다.
+  * 다시 PS가 받아서 다시 ZED Audio Ctrl으로 보낸다.
+  * ZED Audio Ctrl가 SDATA_O로 Audio Codec Chip 으로 보낸다.
+    * Zynq PS가 I2C로 제어한다.
+  * Audio Codec Chip의 DAC로 처리해서 Pynq보드의 Audio-out으로 내보낸다.
+
 ## The design
 The design consists of a FIR filter to filter a 4 KHz tone added to CD quality (48 KHz) music. The characteristic of the filter is as follows:  
     FS=48000 Hz   
